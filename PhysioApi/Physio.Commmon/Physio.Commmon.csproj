@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Physio.Data\Physio.Data.csproj" />
+    <ProjectReference Include="..\Physio.Service\Physio.Service.csproj" />
+    <ProjectReference Include="..\Physio.Web\Physio.Web.csproj" />
+  </ItemGroup>
+
+</Project>
