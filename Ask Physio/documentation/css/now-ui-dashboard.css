@@ -5286,7 +5286,7 @@ Created using IcoMoon - icomoon.io
     color: inherit;
   }
   .footer .copyright {
-    float: right;
+    /* float: right; */
     padding-right: 15px;
   }
 }

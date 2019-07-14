@@ -1,0 +1,7 @@
+.navbar a:not(.btn):not(.dropdown-item){
+    color: #495057 !important;
+}
+.now-ui-icons.ui-1_zoom-bold:before {
+    content: "\ea64";
+    color: #6c757d;
+}
