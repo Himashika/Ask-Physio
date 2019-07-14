@@ -11,3 +11,8 @@ h5.title{
 a{
     color: #007bff;
 }
+.card.filter{
+    padding: 30px;
+    margin: 120px;
+    width: -webkit-fill-available;
+}

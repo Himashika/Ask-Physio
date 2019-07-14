@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -29,7 +30,8 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     AdminLayoutComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    
 
   ],
   providers: [],
