@@ -23,8 +23,7 @@ import { LoginComponent } from './login/login.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    NgbModule,
-    ToastrModule.forRoot()
+    NgbModule
   ],
   declarations: [
     AppComponent,
