@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { DoctorDashboardComponent } from '../../doctor-dashboard/doctor-dashboard.component';
+import { ScheduleComponent } from '../../schedule/schedule.component';
+
 
 @NgModule({
   imports: [
@@ -35,6 +37,7 @@ import { DoctorDashboardComponent } from '../../doctor-dashboard/doctor-dashboar
     MapsComponent,
     NotificationsComponent,
     DoctorDashboardComponent,
+    ScheduleComponent,
   ]
 })
 
