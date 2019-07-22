@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
   public lineChartGradientsNumbersOptions:any;
   public lineChartGradientsNumbersLabels:Array<any>;
   public lineChartGradientsNumbersColors:Array<any>
+  searchtime: Date = new Date();
   // events
   public chartClicked(e:any):void {
     console.log(e);
