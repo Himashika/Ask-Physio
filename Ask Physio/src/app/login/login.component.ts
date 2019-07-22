@@ -23,7 +23,7 @@ formInitialized(){
     password:["",[Validators.required]]
   });
   this.doctorForm = this.fb.group({
-    userName:["",[Validators.required]],
+    xx:["",[Validators.required]],
     password:["",[Validators.required]]
   })
 }

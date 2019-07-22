@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -31,7 +32,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     AdminLayoutComponent,
     RegisterComponent,
-    LoginComponent,
+    LoginComponent
     
 
   ],
