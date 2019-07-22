@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Physio.Data.Domain;
 using Physio.Service.Interfaces;
-using Physio.Service.Models;
 using Physio.Web.Models;
 
 namespace Physio.Web.Controllers
@@ -28,7 +25,6 @@ namespace Physio.Web.Controllers
 
             public SecurityController(ISecurityService securityService,IConfiguration configuration)
             {
-
                 _securityService = securityService;
                 _configuration = configuration;
             }
@@ -79,12 +75,6 @@ namespace Physio.Web.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tockenDescripter);
             return Ok(new JsonResult(tokenHandler.WriteToken(token)));
-        }
-        [HttpGet, Route("exituser")]
-        public async Task<IActionResult> ExistUser(string UserName)
-        {
-            var result = await _securityService.UserExsits(UserName);
-            return Ok(result);
         }
 
     }

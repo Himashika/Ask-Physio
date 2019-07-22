@@ -60,7 +60,7 @@ namespace Physio.Service.Services
 
         }
 
-        public async Task Register(User user, string password)
+        private async Task Register(User user, string password)
         {
             byte[] passwordhash, passwordsalt;
             GeneratePassword(password, out passwordhash, out passwordsalt);
@@ -91,7 +91,11 @@ namespace Physio.Service.Services
             return true;
 
         }
-     
+
+        Task<User> ISecurityService.Register(User user, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
