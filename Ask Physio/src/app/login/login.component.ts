@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder,private logingService:LoginService) { }
   patientForm :FormGroup;
   doctorForm : FormGroup;
+  userLogin = new UserLogin();
   isPatientFormSubmitted = false;
   isDoctorFormSubmitted = false;
   ngOnInit() {
@@ -32,6 +34,9 @@ patientLogin()
   this.isPatientFormSubmitted = true;
   if(!this.patientForm.valid)
   {
+  this.userLogin.UserName = "sathya";
+  this.userLogin.Password = "123";
+  this.logingService.create(this.userLogin)
     return;
   }
 

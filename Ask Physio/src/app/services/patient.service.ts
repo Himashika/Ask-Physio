@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
 import { AppConfigService } from '../core/app-config.service';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService extends BaseService {
+export class PatientService extends BaseService {
   constructor(protected http:HttpClient,private appConfig:AppConfigService,private baseService:BaseService) {
     super(http,appConfig.getBaseUrl()+'/loging');
   }

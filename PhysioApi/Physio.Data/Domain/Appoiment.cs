@@ -21,11 +21,11 @@ namespace Physio.Data.Domain
         public int DoctorId { get; set; }
         public int PatientId { get; set; }
 
-        #region relations
-        [ForeignKey(nameof(DoctorId))]
-        public virtual Doctor Doctor { get; protected set; }
-        [ForeignKey(nameof(PatientId))]
-        public virtual Patient Patient { get; protected set; }
-        #endregion
+        //#region relations
+        //[ForeignKey(nameof(DoctorId))]
+        //public virtual Doctor Doctor { get; protected set; }
+        //[ForeignKey(nameof(PatientId))]
+        //public virtual Patient Patient { get; protected set; }
+        //#endregion
     }
 }

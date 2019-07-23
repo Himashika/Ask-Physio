@@ -11,15 +11,15 @@ using Microsoft.IdentityModel.Tokens;
 using Physio.Data.Domain;
 using Physio.Service.Interfaces;
 using Physio.Web.Models;
+using Physio.Web.Utility;
 
 namespace Physio.Web.Controllers
 {
-   
-        [Route("api/[controller]")]
-        [ApiController]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public class SecurityController : ControllerBase
-        {
+
+    [Route(Constraints.ApiPrefix)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public class SecurityController : Controller
+    {
             private readonly ISecurityService _securityService;
         private readonly IConfiguration _configuration;
 

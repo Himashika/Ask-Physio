@@ -22,7 +22,7 @@ namespace Physio.Web.Controllers
         }
         // GET: /<controller>/
         [HttpGet, Route("patients")]
-        public async Task<PatientViewModel> Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
