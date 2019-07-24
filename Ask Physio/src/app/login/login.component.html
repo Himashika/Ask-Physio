@@ -1,88 +1,101 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<div class="container login">
+    <div class="row">
+        <div class="col-md-3 login-left">
+            <img src="https://home.mmc.edu/wp-content/uploads/2017/04/give-icon.png" alt="" />
+            <h3>Welcome</h3>
+            <h4>Ask Physio</h4>
+            <input type="submit" name="" value="Register Here" [routerLink]="['/register']" /><br />
+        </div>
+        <div class="col-md-9 login-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">Physio</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="login-heading">Patient Login</h3>
+                    <div class="row login-form">
+                        <form [formGroup]="patientForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="User Name *" value=""
+                                            formControlName="userName" />
+                                        <div
+                                            [hidden]="patientForm.get('userName').valid || (patientForm.get('userName').pristine && !isPatientFormSubmitted)">
+                                            <small class="bbk-field__message "
+                                                *ngIf="patientForm.get('userName').errors && patientForm.get('userName').errors.required">
+                                                <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password *" value=""
+                                            formControlName="password" />
+                                        <div
+                                            [hidden]="patientForm.get('password').valid || (patientForm.get('password').pristine && !isPatientFormSubmitted)">
+                                            <small class="bbk-field__message "
+                                                *ngIf="patientForm.get('password').errors && patientForm.get('password').errors.required">
+                                                <i class="fa fa-info-circle u-color-danger"></i> Password is Required
+                                            </small>
+                                        </div>
+                                    </div>
 
-<div class="container register">
-                <div class="row">
-                    <div class="col-md-3 register-left">
-                        <img src="https://home.mmc.edu/wp-content/uploads/2017/04/give-icon.png" alt=""/>
-                        <h3>Welcome</h3>
-                        <h4>Ask Physio</h4>
-                        <input type="submit" name="" value="Register Here" [routerLink]="['/register']"/><br/>
-                    </div>
-                    <div class="col-md-9 register-right">
-                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Patient</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Physio</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Patient Login</h3>
-                                <div class="row register-form">
-                                    <form [formGroup]="patientForm">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="User Name *" value="" formControlName="userName" />
-                                            <div [hidden]="patientForm.get('userName').valid || (patientForm.get('userName').pristine && !isPatientFormSubmitted)">
-                                                    <small class="bbk-field__message " *ngIf="patientForm.get('userName').errors && patientForm.get('userName').errors.required">
-                                                      <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
-                                                    </small>
-                                                  </div>
-                                        </div>
-                                       </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" formControlName="password"/>
-                                            <div [hidden]="patientForm.get('password').valid || (patientForm.get('password').pristine && !isPatientFormSubmitted)">
-                                                    <small class="bbk-field__message " *ngIf="patientForm.get('password').errors && patientForm.get('password').errors.required">
-                                                      <i class="fa fa-info-circle u-color-danger"></i> Password is Required
-                                                    </small>
-                                                  </div>
-                                        </div>
-                                       
-                                        <a href="">Forgot Password?</a>
-                                        <input type="submit" class="btnRegister"  value="Login" (click)="patientLogin()"/>
-                                    </div>
-                                </form>
+                                    <a href="">Forgot Password?</a>
+                                    <input type="submit" class="btnLogin" value="Login" (click)="patientLogin()" />
                                 </div>
                             </div>
-                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <h3  class="register-heading">Physiotherapist Login</h3>
-                               <div class="row register-form">
-                                <form [formGroup]="doctorForm">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="User Name *" value="" formControlName="xx" />
-                                            <div [hidden]="patientForm.get('doctorForm').valid || (patientForm.get('doctorForm').pristine && !isDoctorFormSubmitted)">
-                                                    <small class="bbk-field__message " *ngIf="patientForm.get('doctorForm').errors && patientForm.get('doctorForm').errors.required">
-                                                      <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
-                                                    </small>
-                                                  </div>
-                                        </div>
-                                    </div>
-                                 </form> 
-                                    <div class="col-md-6">
-                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" formControlName="password1" />
-                                            <div [hidden]="patientForm.get('doctorForm').valid || (patientForm.get('doctorForm').pristine && !isDoctorFormSubmitted)">
-                                                    <small class="bbk-field__message " *ngIf="patientForm.get('doctorForm').errors && patientForm.get('doctorForm').errors.required">
-                                                      <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
-                                                    </small>
-                                                  </div>
-                                        </div>
-                                        
-                                        <a href="">Forgot Password?</a>
-                                        <input type="submit" class="btnRegister"  value="Login" (click)="doctorLogin()"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="login-heading">Physiotherapist Login</h3>
+                    <div class="row login-form">
+                        <form [formGroup]="doctorForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Medical No *" value=""
+                                            formControlName="userName" />
+                                        <div
+                                            [hidden]="doctorForm.get('userName').valid || (doctorForm.get('userName').pristine && !isDoctorFormSubmitted)">
+                                            <small class="bbk-field__message "
+                                                *ngIf="doctorForm.get('userName').errors && doctorForm.get('userName').errors.required">
+                                                <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password *" value=""
+                                            formControlName="password1" />
+                                        <div
+                                            [hidden]="doctorForm.get('password').valid || (doctorForm.get('password').pristine && !isDoctorFormSubmitted)">
+                                            <small class="bbk-field__message "
+                                                *ngIf="doctorForm.get('password').errors && doctorForm.get('password').errors.required">
+                                                <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
+                                            </small>
+                                        </div>
+                                    </div>
 
+                                    <a href="">Forgot Password?</a>
+                                    <input type="submit" class="btnLogin" value="Login" (click)="doctorLogin()" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+
+</div>

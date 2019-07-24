@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Physio.Service.Bo;
 using Physio.Service.Interfaces;
 //using Physio.Service.Interfaces;
 using Physio.Web.Models;
@@ -20,9 +21,9 @@ namespace Physio.Web.Controllers
         {
             service = _service;
         }
-        // GET: /<controller>/
+     
         [HttpGet, Route("patients")]
-        public async Task<PatientViewModel> Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
@@ -37,7 +38,7 @@ namespace Physio.Web.Controllers
 
         }
         [HttpPost, Route("patients")]
-        public async Task<IActionResult> Post(PatientViewModel model)
+        public async Task<IActionResult> Post(PatientBo model)
         {
             try
             {
@@ -52,7 +53,7 @@ namespace Physio.Web.Controllers
 
         }
         [HttpPut, Route("patients")]
-        public async Task<IActionResult> Update(PatientViewModel model)
+        public async Task<IActionResult> Update(PatientBo model)
         {
             try
             {

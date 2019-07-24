@@ -4,20 +4,14 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss']
-
   
 })
-
 export class ScheduleComponent implements OnInit {
-  myDateValue: Date;
-
+  // bsInlineValue = new Date();
+  // totime: Date = new Date();
+  // fromtime: Date = new Date();
 
   ngOnInit() {
-    this.myDateValue = new Date();
   }
-  onDateChange(newDate: Date) {
-    console.log(newDate);
-  }
- 
 
 }

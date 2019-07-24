@@ -11,15 +11,15 @@ using Microsoft.IdentityModel.Tokens;
 using Physio.Data.Domain;
 using Physio.Service.Interfaces;
 using Physio.Web.Models;
+using Physio.Web.Utility;
 
 namespace Physio.Web.Controllers
 {
-   
-        [Route("api/[controller]")]
-        [ApiController]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public class SecurityController : ControllerBase
-        {
+
+    [Route(Constraints.ApiPrefix)]
+   // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public class SecurityController : Controller
+    {
             private readonly ISecurityService _securityService;
         private readonly IConfiguration _configuration;
 
@@ -53,7 +53,7 @@ namespace Physio.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Loging([FromBody] UserViewModel model)
         {
-            throw new Exception("values are not valid");
+           // throw new Exception("values are not valid");
             var result = await _securityService.Login(model.UserName.ToLower(), model.Password);
             if (result == null)
                 return Unauthorized();

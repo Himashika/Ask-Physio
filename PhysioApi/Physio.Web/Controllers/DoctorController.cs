@@ -32,21 +32,21 @@ namespace Physio.Web.Controllers
             }
 
         }
-        [HttpGet, Route("Doctors")]
-        public async Task<IActionResult> Get()
-        {
-            try
-            {
-                var result = await service.ReadAll();
-                return Ok(result);
-            }
-            catch (Exception)
-            {
+        //[HttpGet, Route("Doctors")]
+        //public async Task<IActionResult> Get()
+        //{
+        //    try
+        //    {
+        //        var result = await service.ReadAll();
+        //        return Ok(result);
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
+        //        throw;
+        //    }
 
-        }
+        //}
         [HttpPost, Route("Doctors")]
         public async Task<IActionResult> Post(DoctorBo model)
         {

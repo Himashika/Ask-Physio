@@ -1,6 +1,10 @@
-class UserLogin{
- Id: number;
+
+export class UserLogin
+{
+ 
  UserName:string;
  Password:string;
- IsDoctor:boolean;
+ UserRole:string;
 }
+
+
