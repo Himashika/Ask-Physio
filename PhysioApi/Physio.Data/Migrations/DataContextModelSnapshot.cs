@@ -56,7 +56,9 @@ namespace Physio.Data.Migrations
 
             modelBuilder.Entity("Physio.Data.Domain.Doctor", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address");
 
@@ -92,7 +94,11 @@ namespace Physio.Data.Migrations
 
                     b.Property<string>("RegistrationNo");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Doctor");
                 });
@@ -234,7 +240,7 @@ namespace Physio.Data.Migrations
                 {
                     b.HasOne("Physio.Data.Domain.User", "User")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

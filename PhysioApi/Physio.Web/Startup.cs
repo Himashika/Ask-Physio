@@ -32,6 +32,8 @@ namespace Physio.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ISecurityService, SecurityService>();
+            services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<IPatientService, PatientService>();
 
 
             // Auto Mapper Configurations

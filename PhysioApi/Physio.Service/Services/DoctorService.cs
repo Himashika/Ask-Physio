@@ -12,7 +12,7 @@ namespace Physio.Service.Services
 {
     public class DoctorService : IDoctorService
     {
-       private IUnitOfWork _context;
+        private readonly IUnitOfWork _context;
         private ISecurityService _userService;
 
         public DoctorService(IUnitOfWork context, ISecurityService userService)
@@ -24,13 +24,14 @@ namespace Physio.Service.Services
         {
             try
             {
-                 var @doctor = new Doctor().Create(model.Id, model.FirstName, model.LastName, model.PhoneNo
+                var userModel = new User().Create(model.Email, Enums.UserRoles.Consultant);
+                var @user = await _userService.Register(userModel, model.Password);
+                var @doctor = new Doctor().Create(@user.Id, model.FirstName, model.LastName, model.PhoneNo
                     , model.Hospital, model.ImageUrl, model.Email, model.Description, model.RegistrationNo, model.Address, model.Gender);
-                 var result =  await _context.DoctorRepository.CreateAndSave(@doctor);
-                 var userModel = new User().Create(result.Id,result.Email,Enums.UserRoles.Consultant);
-                 await _userService.Register(userModel,model.Password);
+                var result = await _context.DoctorRepository.CreateAndSave(@doctor);
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
@@ -43,7 +44,7 @@ namespace Physio.Service.Services
                 var @doctor = new Doctor().Create(model.Id, model.FirstName, model.LastName, model.PhoneNo
                    , model.Hospital, model.ImageUrl, model.Email, model.Description, model.RegistrationNo, model.Address, model.Gender);
                 var result = await _context.DoctorRepository.CreateAndSave(@doctor);
-             
+
             }
             catch (Exception)
             {
@@ -55,8 +56,8 @@ namespace Physio.Service.Services
         {
             try
             {
-               
-                var result = await _context.DoctorRepository.Read(x=>x.Id == userId);
+
+                var result = await _context.DoctorRepository.Read(x => x.Id == userId);
                 return result;
 
             }
@@ -71,8 +72,8 @@ namespace Physio.Service.Services
             try
             {
 
-               var result =  _context.DoctorRepository.TableAsNoTracking.Where(x=>x.User.Status==Enums.RecordStatus.Active).ToList();
-               return result;
+                var result = _context.DoctorRepository.TableAsNoTracking.Where(x => x.User.Status == Enums.RecordStatus.Active).ToList();
+                return result;
 
             }
             catch (Exception)

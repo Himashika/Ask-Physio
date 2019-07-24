@@ -26,27 +26,34 @@ namespace Physio.Data.Domain
         public string RegistrationNo { get; set; }
         public string Address { get; set; }
         public int Gender { get; set; }
-        //public int UserId { get; set; }
+        public int UserId { get; set; }
 
         #region relations
-        [ForeignKey(nameof(Id))]
+        [ForeignKey(nameof(UserId))]
         public virtual User User { get; protected set; }
         #endregion
 
-        public Doctor Create(int id,string firstName,string lastName, int phoneNo,string hospital,
-            string imageUrl,string email,string description,string registrationNo,string address,int gender)
+        public Doctor Create(int id, string firstName, string lastName, int phoneNo, string hospital,
+           string imageUrl, string email, string description, string registrationNo, string address, int gender)
         {
-            Id = id;
+            UserId = id;
             FirstName = firstName;
             LastName = lastName;
             PhoneNo = phoneNo;
             Hospital = hospital;
+            ImageUrl = imageUrl;
             ImageUrl = imageUrl;
             Email = email;
             Description = description;
             RegistrationNo = registrationNo;
             Address = address;
             Gender = gender;
+            return this;
+        }
+        public Doctor AddUser(User user)
+        {
+            User = user;
+
             return this;
         }
     }

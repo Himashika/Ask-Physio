@@ -12,17 +12,18 @@ namespace Physio.Web.Controllers
     public class DoctorController : Controller
     {
         protected IDoctorService service { get; set; }
-        private ISecurityService _securityService { get; set; }
+        private ISecurityService securityService { get; set; }
         public DoctorController(IDoctorService _service, ISecurityService _securityService)
         {
             service = _service;
+            securityService = _securityService;
         }
         [HttpGet, Route("Doctors")]
         public async Task<IActionResult> Get(int id)
         {
             try
             {
-              var result =  await service.Read(id);
+                var result = await service.Read(id);
                 return Ok(result);
             }
             catch (Exception)
@@ -56,7 +57,7 @@ namespace Physio.Web.Controllers
                     return BadRequest(ModelState);
 
                 model.Email = model.Email.ToLower();
-                if (await _securityService.UserExsits(model.Email))
+                if (await securityService.UserExsits(model.Email))
                 {
                     return BadRequest("User Name Already Exists");
                 }
@@ -67,7 +68,7 @@ namespace Physio.Web.Controllers
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

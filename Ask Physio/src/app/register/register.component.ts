@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   patientModel= new PatientModel();
 
   isPatientFormSubmitted = false;
+  isDoctorFormSubmitted = false;
   constructor(private router: Router, private fb: FormBuilder,private doctorService:DoctorService,private patientService: PatientService) { }
 
   ngOnInit() {
@@ -71,7 +72,7 @@ export class RegisterComponent implements OnInit {
     )
   }
   saveDoctor() {
-    this.isPatientFormSubmitted = true;
+    this.isDoctorFormSubmitted = true;
     if(!this.patientRegistrationForm.valid)
     {
       return;
@@ -82,7 +83,7 @@ export class RegisterComponent implements OnInit {
     )
   }
   updateDoctor() {
-    this.isPatientFormSubmitted = true;
+    this.isDoctorFormSubmitted = true;
     if(!this.patientRegistrationForm.valid)
     {
       return;

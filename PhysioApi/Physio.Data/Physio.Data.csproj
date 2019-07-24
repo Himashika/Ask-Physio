@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190724171954_change_doctorentity.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Physio.Commmon\Physio.Commmon.csproj" />
   </ItemGroup>
 

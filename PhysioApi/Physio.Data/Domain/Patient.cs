@@ -29,5 +29,24 @@ namespace Physio.Data.Domain
         [ForeignKey(nameof(Id))]
         public virtual User User { get; protected set; }
         #endregion
+        public Patient Create(int id, string firstName, string lastName, string phoneNo,
+         string imageUrl, string email, string address, int gender)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNo = phoneNo;
+            ImageUrl = imageUrl;
+            Email = email;
+            Address = address;
+            Gender = gender;
+            return this;
+        }
+
+        public Patient AddUser(User user)
+        {
+            User = user;
+            return this;
+        }
     }
 }

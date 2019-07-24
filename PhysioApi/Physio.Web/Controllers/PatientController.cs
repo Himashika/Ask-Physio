@@ -17,9 +17,11 @@ namespace Physio.Web.Controllers
     public class PatientController : Controller
     {
         protected IPatientService service { get; set; }
-        public PatientController(IPatientService _service)
+        private ISecurityService securityService { get; set; }
+        public PatientController(IPatientService _service, ISecurityService _securityService)
         {
             service = _service;
+            securityService = _securityService;
         }
      
         [HttpGet, Route("patients")]

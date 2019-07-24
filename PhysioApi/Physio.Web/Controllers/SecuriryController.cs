@@ -44,7 +44,7 @@ namespace Physio.Web.Controllers
             else
             {
                 var createUser = new User { UserName = model.UserName };
-                var result = await _securityService.Register(createUser, model.Password);
+                var result = _securityService.Register(createUser, model.Password);
                 return StatusCode(201);
             }
         }
@@ -53,7 +53,7 @@ namespace Physio.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Loging([FromBody] UserViewModel model)
         {
-           // throw new Exception("values are not valid");
+            // throw new Exception("values are not valid");
             var result = await _securityService.Login(model.UserName.ToLower(), model.Password);
             if (result == null)
                 return Unauthorized();

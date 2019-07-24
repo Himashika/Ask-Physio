@@ -18,10 +18,10 @@ namespace Physio.Service.Services
 {
     public class SecurityService : ISecurityService
     {
-        private readonly DataContext _context;
+        private readonly IUnitOfWork _context;
         private readonly IConfiguration configuration;
 
-        public SecurityService(DataContext context, IConfiguration Configuration)
+        public SecurityService(IUnitOfWork context, IConfiguration Configuration)
         {
 
             _context = context;
@@ -30,7 +30,7 @@ namespace Physio.Service.Services
 
         public async Task<User> Login(string username, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == username);
+            var user = await _context.UserRepository.Read(x => x.UserName == username);
             if (user == null)
                 return null;
 
@@ -60,7 +60,7 @@ namespace Physio.Service.Services
 
         }
 
-        private async Task Register(User user, string password)
+        public async Task<User> Register(User user, string password)
         {
             byte[] passwordhash, passwordsalt;
             GeneratePassword(password, out passwordhash, out passwordsalt);
@@ -68,8 +68,9 @@ namespace Physio.Service.Services
             user.PassWordHash = passwordhash;
             user.PassWordsalt = passwordsalt;
 
-            await _context.AddAsync(user);
-            await _context.SaveChangesAsync();
+            var result = await _context.UserRepository.CreateAndSave(user);
+
+            return result;
         }
 
         private void GeneratePassword(string password, out byte[] passwordhash, out byte[] passwordsalt)
@@ -83,8 +84,8 @@ namespace Physio.Service.Services
 
         public async Task<bool> UserExsits(string username)
         {
-            var user = await _context.Users.AnyAsync(x => x.UserName == username);
-            if (!user)
+            var user = await _context.UserRepository.TableAsNoTracking.FirstOrDefaultAsync(x => x.UserName == username);
+            if (user == null)
             {
                 return false;
             }
@@ -92,10 +93,6 @@ namespace Physio.Service.Services
 
         }
 
-        Task<User> ISecurityService.Register(User user, string password)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }

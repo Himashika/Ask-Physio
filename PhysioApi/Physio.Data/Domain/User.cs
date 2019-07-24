@@ -20,13 +20,13 @@ namespace Physio.Data.Domain
 
 
 
-        public User Create(int id,string userName, Enums.UserRoles userRole)
+        public User Create(string userName, Enums.UserRoles userRole)
         {
-            Id = id;
             UserName = userName;
             UserRole = userRole;
             return this;
         }
+
     }
    
 }

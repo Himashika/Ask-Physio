@@ -19,6 +19,7 @@ namespace Physio.Data.Infastructure
         public IQueryable<T> Table => context.Set<T>();
         private readonly DataContext context;
         private readonly DbSet<T> dbSet;
+        private bool _disposed;
         #endregion
 
         #region ctor
@@ -218,12 +219,8 @@ namespace Physio.Data.Infastructure
                 }
 
                 dbSet.Add((T)item);
-                if (enableAudit)
-                //    await context.SaveChangesAsyncWithAudit();
-                //else
-                    await context.SaveChangesAsync();
-
-                return (T)item;
+                await context.SaveChangesAsync();
+               return (T)item;
             }
             catch (DbUpdateException dbEx)
             {
@@ -316,7 +313,17 @@ namespace Physio.Data.Infastructure
             //}
             dbSet.RemoveRange(lst);
         }
-
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    context.Dispose();
+                }
+            }
+            _disposed = true;
+        }
      
         #endregion
 
