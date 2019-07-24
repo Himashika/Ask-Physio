@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DoctorService extends BaseService {
-constructor(protected http:HttpClient,private appConfig:AppConfigService,private baseService:BaseService) {
-    super(http,appConfig.getBaseUrl()+'/loging');
+constructor(protected http:HttpClient,private appConfig:AppConfigService) {
+    super(http,appConfig.getBaseUrl()+'/Doctors');
   }
 }

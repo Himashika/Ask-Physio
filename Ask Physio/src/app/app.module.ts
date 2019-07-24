@@ -14,6 +14,11 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './services/login.service';
+import { AppConfigService } from './core/app-config.service';
+import { DoctorService } from './services/doctor.service';
+import { PatientService } from './services/patient.service';
+
 
 
 @NgModule({
@@ -32,10 +37,9 @@ import { LoginComponent } from './login/login.component';
     AdminLayoutComponent,
     RegisterComponent,
     LoginComponent,
-    
 
   ],
-  providers: [],
+  providers: [LoginService,AppConfigService,PatientService,DoctorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

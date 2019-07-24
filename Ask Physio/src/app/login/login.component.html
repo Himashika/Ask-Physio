@@ -57,20 +57,19 @@
                                 <form [formGroup]="doctorForm">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Medical No *" value="" formControlName="doctorForm"/>
-                                            <div [hidden]="patientForm.get('doctorForm').valid || (patientForm.get('doctorForm').pristine && !isDoctorFormSubmitted)">
-                                                    <small class="bbk-field__message " *ngIf="patientForm.get('doctorForm').errors && patientForm.get('doctorForm').errors.required">
+                                            <input type="text" class="form-control" placeholder="Medical No *" value="" formControlName="userName"/>
+                                            <div [hidden]="doctorForm.get('userName').valid || (doctorForm.get('userName').pristine && !isDoctorFormSubmitted)">
+                                                    <small class="bbk-field__message " *ngIf="doctorForm.get('userName').errors && doctorForm.get('userName').errors.required">
                                                       <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
                                                     </small>
                                                   </div>
                                         </div>
                                     </div>
-                                 </form> 
-                                    <div class="col-md-6">
+                                         <div class="col-md-6">
                                          <div class="form-group">
                                             <input type="password" class="form-control" placeholder="Password *" value="" formControlName="password" />
-                                            <div [hidden]="patientForm.get('doctorForm').valid || (patientForm.get('doctorForm').pristine && !isDoctorFormSubmitted)">
-                                                    <small class="bbk-field__message " *ngIf="patientForm.get('doctorForm').errors && patientForm.get('doctorForm').errors.required">
+                                            <div [hidden]="doctorForm.get('password').valid || (doctorForm.get('password').pristine && !isDoctorFormSubmitted)">
+                                                    <small class="bbk-field__message " *ngIf="doctorForm.get('password').errors && doctorForm.get('password').errors.required">
                                                       <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
                                                     </small>
                                                   </div>
@@ -79,6 +78,7 @@
                                         <a href="">Forgot Password?</a>
                                         <input type="submit" class="btnRegister"  value="Login" (click)="doctorLogin()"/>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                         </div>

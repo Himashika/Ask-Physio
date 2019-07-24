@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Physio.Commmon;
 using Physio.Data.Infastructure;
+using Physio.Service.Interfaces;
 using Physio.Service.Services;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -14,6 +15,7 @@ namespace Physio.Web
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,7 +31,8 @@ namespace Physio.Web
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-         
+            services.AddScoped<ISecurityService, SecurityService>();
+
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
@@ -52,6 +55,18 @@ namespace Physio.Web
                 });
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_0);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +81,7 @@ namespace Physio.Web
             {
                 app.UseHsts();
             }
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSwagger();

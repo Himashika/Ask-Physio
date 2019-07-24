@@ -10,7 +10,7 @@ using Physio.Data.Infastructure;
 namespace Physio.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190722155922_initial")]
+    [Migration("20190723162734_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

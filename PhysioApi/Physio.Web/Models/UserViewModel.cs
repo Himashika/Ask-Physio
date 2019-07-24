@@ -10,8 +10,6 @@ namespace Physio.Web.Models
     {
         public int Id { get; set; }
         public string UserName { get; set; }
-        public byte[] PassWordHash { get; set; }
-        public byte[] PassWordsalt { get; set; }
         public Enums.UserRoles UserRole { get; set; }
         public string Password { get; set; }
     }

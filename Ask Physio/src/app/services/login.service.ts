@@ -7,7 +7,7 @@ import { AppConfigService } from '../core/app-config.service';
   providedIn: 'root'
 })
 export class LoginService extends BaseService {
-  constructor(protected http:HttpClient,private appConfig:AppConfigService,private baseService:BaseService) {
-    super(http,appConfig.getBaseUrl()+'/loging');
+  constructor(protected http:HttpClient,private appConfig:AppConfigService) {
+    super(http,appConfig.getBaseUrl()+'loging');
   }
 }

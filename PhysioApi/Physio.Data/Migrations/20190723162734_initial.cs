@@ -128,25 +128,23 @@ namespace Physio.Data.Migrations
                     IsApprove = table.Column<bool>(nullable: false),
                     DoctorId = table.Column<int>(nullable: false),
                     PatientId = table.Column<int>(nullable: false)
-                }
-                //,
-                //constraints: table =>
-                //{
-                //    table.PrimaryKey("PK_Appoiment", x => x.Id);
-                //    table.ForeignKey(
-                //        name: "FK_Appoiment_Doctor_DoctorId",
-                //        column: x => x.DoctorId,
-                //        principalTable: "Doctor",
-                //        principalColumn: "Id",
-                //        onDelete: ReferentialAction.Cascade);
-                //    table.ForeignKey(
-                //        name: "FK_Appoiment_Patient_PatientId",
-                //        column: x => x.PatientId,
-                //        principalTable: "Patient",
-                //        principalColumn: "Id",
-                //        onDelete: ReferentialAction.Cascade);
-                //}
-                );
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Appoiment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Appoiment_Doctor_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "Doctor",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Appoiment_Patient_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "Patient",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
 
             migrationBuilder.CreateTable(
                 name: "ScheduleTime",

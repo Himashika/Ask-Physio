@@ -1,4 +1,10 @@
-class UserLogin{
+
+export class UserLogin
+{
+ 
  UserName:string;
  Password:string;
+ UserRole:string;
 }
+
+

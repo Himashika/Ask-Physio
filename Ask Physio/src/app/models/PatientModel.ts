@@ -1,4 +1,4 @@
-class PatienttmModel{
+class PatientModel{
     FirstName : string;
     LastName : string;
     PhoneNo : string;
