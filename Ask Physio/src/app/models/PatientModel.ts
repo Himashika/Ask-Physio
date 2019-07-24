@@ -1,4 +1,5 @@
-class PatientModel{
+export class PatientModel{
+    
     FirstName : string;
     LastName : string;
     PhoneNo : string;

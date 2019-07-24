@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DoctorModel } from '../models/DoctorModel';
 import { PatientService } from '../services/patient.service';
 import { DoctorService } from '../services/doctor.service';
+import { PatientModel } from '../models/PatientModel';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +15,12 @@ export class RegisterComponent implements OnInit {
 
   patientRegistrationForm: FormGroup;
   doctorRegistrationForm: FormGroup;
-  patientModel= new PatientModel();
+
   doctorModel= new DoctorModel();
+  patientModel= new PatientModel();
+
   isPatientFormSubmitted = false;
-  constructor(private router: Router, private fb: FormBuilder,
-  private patientService:PatientService,private doctorService:DoctorService) { }
+  constructor(private router: Router, private fb: FormBuilder,private doctorService:DoctorService,private patientService: PatientService) { }
 
   ngOnInit() {
     this.formInitialized();
