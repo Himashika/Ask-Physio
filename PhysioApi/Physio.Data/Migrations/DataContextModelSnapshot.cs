@@ -130,7 +130,9 @@ namespace Physio.Data.Migrations
 
             modelBuilder.Entity("Physio.Data.Domain.Patient", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -162,7 +164,11 @@ namespace Physio.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Patient");
                 });
@@ -256,7 +262,7 @@ namespace Physio.Data.Migrations
                 {
                     b.HasOne("Physio.Data.Domain.User", "User")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

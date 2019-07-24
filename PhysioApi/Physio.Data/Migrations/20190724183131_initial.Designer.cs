@@ -10,7 +10,7 @@ using Physio.Data.Infastructure;
 namespace Physio.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190723162734_initial")]
+    [Migration("20190724183131_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,9 @@ namespace Physio.Data.Migrations
 
             modelBuilder.Entity("Physio.Data.Domain.Doctor", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address");
 
@@ -94,7 +96,11 @@ namespace Physio.Data.Migrations
 
                     b.Property<string>("RegistrationNo");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Doctor");
                 });
@@ -126,7 +132,9 @@ namespace Physio.Data.Migrations
 
             modelBuilder.Entity("Physio.Data.Domain.Patient", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -158,7 +166,11 @@ namespace Physio.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Patient");
                 });
@@ -236,7 +248,7 @@ namespace Physio.Data.Migrations
                 {
                     b.HasOne("Physio.Data.Domain.User", "User")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -252,7 +264,7 @@ namespace Physio.Data.Migrations
                 {
                     b.HasOne("Physio.Data.Domain.User", "User")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

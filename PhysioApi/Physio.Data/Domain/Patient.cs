@@ -23,16 +23,16 @@ namespace Physio.Data.Domain
         public string ImageUrl { get; set; }
         public string Email { get; set; }
         public int Gender { get; set; }
-        //public int UserId { get; set; }
+        public int UserId { get; set; }
 
         #region relations
-        [ForeignKey(nameof(Id))]
+        [ForeignKey(nameof(UserId))]
         public virtual User User { get; protected set; }
         #endregion
         public Patient Create(int id, string firstName, string lastName, string phoneNo,
          string imageUrl, string email, string address, int gender)
         {
-            Id = id;
+            UserId = id;
             FirstName = firstName;
             LastName = lastName;
             PhoneNo = phoneNo;

@@ -27,7 +27,7 @@ namespace Physio.Service.Services
                 var userModel = new User().Create(model.Email, Enums.UserRoles.Consultant);
                 var @user = await _userService.Register(userModel, model.Password);
                 var @doctor = new Doctor().Create(@user.Id, model.FirstName, model.LastName, model.PhoneNo
-                    , model.Hospital, model.ImageUrl, model.Email, model.Description, model.RegistrationNo, model.Address, model.Gender);
+                    , model.Hospital, model.ImageUrl, model.Email, model.Description, model.RegistrationNo, model.Address, model.Gender).AddUser(@user);
                 var result = await _context.DoctorRepository.CreateAndSave(@doctor);
 
             }

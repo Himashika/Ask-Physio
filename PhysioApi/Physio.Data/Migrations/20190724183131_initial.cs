@@ -37,7 +37,8 @@ namespace Physio.Data.Migrations
                     CreatedById = table.Column<int>(nullable: false),
                     EditedOn = table.Column<DateTime>(nullable: true),
                     EditedById = table.Column<int>(nullable: true),
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     PhoneNo = table.Column<int>(maxLength: 20, nullable: false),
@@ -47,17 +48,18 @@ namespace Physio.Data.Migrations
                     Description = table.Column<string>(nullable: true),
                     RegistrationNo = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    Gender = table.Column<int>(nullable: false)
+                    Gender = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Doctor", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Doctor_User_Id",
-                        column: x => x.Id,
+                        name: "FK_Doctor_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,24 +70,26 @@ namespace Physio.Data.Migrations
                     CreatedById = table.Column<int>(nullable: false),
                     EditedOn = table.Column<DateTime>(nullable: true),
                     EditedById = table.Column<int>(nullable: true),
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     PhoneNo = table.Column<string>(maxLength: 20, nullable: false),
                     Address = table.Column<string>(maxLength: 200, nullable: false),
                     ImageUrl = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Gender = table.Column<int>(nullable: false)
+                    Gender = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Patient", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Patient_User_Id",
-                        column: x => x.Id,
+                        name: "FK_Patient_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -143,7 +147,7 @@ namespace Physio.Data.Migrations
                         column: x => x.PatientId,
                         principalTable: "Patient",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -182,9 +186,19 @@ namespace Physio.Data.Migrations
                 column: "PatientId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Doctor_UserId",
+                table: "Doctor",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DoctorSchedule_DoctorId",
                 table: "DoctorSchedule",
                 column: "DoctorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patient_UserId",
+                table: "Patient",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ScheduleTime_ScheduleId",
