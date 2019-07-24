@@ -4,21 +4,20 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss']
-})
-// export class DemoDatepickerBasicComponent {}
-export class ScheduleComponent implements OnInit {
 
-  // ismeridian: boolean = true;
- 
-  // fromtime: Date = new Date();
-  // totime: Date = new Date();
-  constructor() { }
+  
+})
+
+export class ScheduleComponent implements OnInit {
+  myDateValue: Date;
+
 
   ngOnInit() {
+    this.myDateValue = new Date();
   }
-
-  toggleMode(): void {
-    // this.ismeridian = !this.ismeridian;
+  onDateChange(newDate: Date) {
+    console.log(newDate);
   }
+ 
 
 }
