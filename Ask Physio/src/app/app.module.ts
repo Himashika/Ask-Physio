@@ -18,6 +18,7 @@ import { LoginService } from './services/login.service';
 import { AppConfigService } from './core/app-config.service';
 import { DoctorService } from './services/doctor.service';
 import { PatientService } from './services/patient.service';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 // import { ScheduleComponent } from './schedule/schedule.component';
 
 
@@ -32,7 +33,9 @@ import { PatientService } from './services/patient.service';
     RouterModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OwlDateTimeModule, 
+         OwlNativeDateTimeModule
   ],
   declarations: [
     AppComponent,
