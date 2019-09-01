@@ -20,7 +20,7 @@ namespace Physio.Service.Services
             _context = context;
             _userService = userService;
         }
-        public async void Create(DoctorBo model)
+        public async Task Create(DoctorBo model)
         {
             try
             {
@@ -28,7 +28,14 @@ namespace Physio.Service.Services
                 var @user = await _userService.Register(userModel, model.Password);
                 var @doctor = new Doctor().Create(@user.Id, model.FirstName, model.LastName, model.PhoneNo
                     , model.Hospital, model.ImageUrl, model.Email, model.Description, model.RegistrationNo, model.Address, model.Gender).AddUser(@user);
-                var result = await _context.DoctorRepository.CreateAndSave(@doctor);
+
+                await _context.DoctorRepository.CreateAndSave(@doctor);
+               // using (DataContext contextt = new DataContext())
+                //{
+                //    var result = await contextt.Doctors.AddAsync(@doctor);
+                //    contextt.SaveChangesAsync(
+                //}
+                    
 
             }
             catch (Exception ex)

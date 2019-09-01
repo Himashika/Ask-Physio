@@ -3,7 +3,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -54,7 +53,7 @@ namespace Physio.Web.Controllers
         public async Task<IActionResult> Loging([FromBody] UserViewModel model)
         {
             // throw new Exception("values are not valid");
-            var result = await _securityService.Login(model.UserName.ToLower(), model.Password);
+            var result = await _securityService.Login(model.UserName.ToLower(), model.Password,model.UserRole);
             if (result == null)
                 return Unauthorized();
 

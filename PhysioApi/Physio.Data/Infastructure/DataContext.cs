@@ -8,9 +8,21 @@ namespace Physio.Data.Infastructure
 {
     public class DataContext : DbContext,IDataContext
     {
+        public static string ConnectionString { get; set; }
         public DataContext(DbContextOptions options) : base(options)
         {
 
+        }
+        public DataContext()
+        {
+
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=DESKTOP-5VCPOT7;Database=DbPhysio;Trusted_Connection=true;");
+            }
         }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<DoctorSchedule> DoctorSchedules { get; set; }

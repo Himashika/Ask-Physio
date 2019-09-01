@@ -49,7 +49,7 @@ namespace Physio.Web.Controllers
 
         //}
         [HttpPost, Route("Doctors")]
-        public async Task<IActionResult> Post(DoctorBo model)
+        public async Task<IActionResult> Post([FromBody] DoctorBo model)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Physio.Web.Controllers
 
         }
         [HttpPut, Route("Doctors")]
-        public async Task<IActionResult> Update(DoctorBo model)
+        public async Task<IActionResult> Update([FromBody]DoctorBo model)
         {
             try
             {

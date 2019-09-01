@@ -25,7 +25,7 @@ namespace Physio.Data.Domain
         public String Description { get; set; }
         public string RegistrationNo { get; set; }
         public string Address { get; set; }
-        public int Gender { get; set; }
+        public string Gender { get; set; }
         public int UserId { get; set; }
 
         #region relations
@@ -34,7 +34,7 @@ namespace Physio.Data.Domain
         #endregion
 
         public Doctor Create(int id, string firstName, string lastName, int phoneNo, string hospital,
-           string imageUrl, string email, string description, string registrationNo, string address, int gender)
+           string imageUrl, string email, string description, string registrationNo, string address, string gender)
         {
             UserId = id;
             FirstName = firstName;

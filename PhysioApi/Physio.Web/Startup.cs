@@ -30,10 +30,10 @@ namespace Physio.Web
             services.AddDbContext<DataContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<ISecurityService, SecurityService>();
-            services.AddScoped<IDoctorService, DoctorService>();
-            services.AddScoped<IPatientService, PatientService>();
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<ISecurityService, SecurityService>();
+            services.AddSingleton<IDoctorService, DoctorService>();
+            services.AddSingleton<IPatientService, PatientService>();
 
 
             // Auto Mapper Configurations

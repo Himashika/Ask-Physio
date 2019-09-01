@@ -10,5 +10,9 @@ namespace Physio.Web.Models
         public int Id { get; set; }
         public int DoctorId { get; set; }
         public DateTime Date { get; set; }
+        public String City { get; set; }
+        public int PostalCode { get; set; }
+        public string Description { get; set; }
+
     }
 }

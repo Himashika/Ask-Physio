@@ -16,7 +16,7 @@ namespace Physio.Service.Bo
         public String Description { get; set; }
         public string RegistrationNo { get; set; }
         public string Address { get; set; }
-        public int Gender { get; set; }
+        public string Gender { get; set; }
         public string Password { get; set; }
     }
 }

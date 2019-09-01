@@ -31,5 +31,25 @@ namespace Physio.Data.Infastructure
         public GenericRepository<User> UserRepository => userRepository ?? (userRepository = new GenericRepository<User>(_context));
         public GenericRepository<Appoiment> AppoimentRepository => appoimentRepository ?? (appoimentRepository = new GenericRepository<Appoiment>(_context));
         #endregion
+
+        private bool _disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            _disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

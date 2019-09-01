@@ -220,6 +220,7 @@ namespace Physio.Data.Infastructure
 
                 dbSet.Add((T)item);
                 await context.SaveChangesAsync();
+          
                return (T)item;
             }
             catch (DbUpdateException dbEx)
@@ -264,6 +265,7 @@ namespace Physio.Data.Infastructure
                 //}
                 //else
                     await context.SaveChangesAsync();
+              
                 return (T)item;
             }
             catch (DbUpdateException dbEx)
@@ -279,6 +281,7 @@ namespace Physio.Data.Infastructure
                 throw new NullObjectException("item not found");
             }
             dbSet.Remove(item);
+     
         }
 
         public async Task DeleteAndSave(T item, bool enableAudit = false)
@@ -292,6 +295,7 @@ namespace Physio.Data.Infastructure
             //    await context.SaveChangesAsyncWithAudit();
             //else
                 await context.SaveChangesAsync();
+        
         }
 
         public virtual async Task Delete(Expression<Func<T, bool>> filter, int tenantId)

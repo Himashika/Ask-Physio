@@ -9,7 +9,7 @@ namespace Physio.Service.Interfaces
 {
     public interface IDoctorService
     {
-         void Create(DoctorBo model);
+        Task Create(DoctorBo model);
          void Update(DoctorBo model);
         Task<Doctor> Read(int userId);
         Task<List<Doctor>> ReadAll();

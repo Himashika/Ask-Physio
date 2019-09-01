@@ -16,6 +16,10 @@ namespace Physio.Data.Domain
         public bool morning { get; set; }
         [Required]
         public bool afternoon { get; set; }
+        public String Address { get; set; }
+        public String City { get; set; }
+        public int PostalCode { get; set; }
+        public string Description { get; set; }
 
         #region relations
         [ForeignKey(nameof(ScheduleId))]

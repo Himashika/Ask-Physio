@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Physio.Commmon;
 using Physio.Data.Domain;
 using Physio.Data.Infastructure;
 using Physio.Service.Bo;
@@ -28,9 +29,9 @@ namespace Physio.Service.Services
             configuration = Configuration;
         }
 
-        public async Task<User> Login(string username, string password)
+        public async Task<User> Login(string username, string password, Enums.UserRoles userRole)
         {
-            var user = await _context.UserRepository.Read(x => x.UserName == username);
+            var user = await _context.UserRepository.Read(x => x.UserName == username && x.UserRole== userRole);
             if (user == null)
                 return null;
 
