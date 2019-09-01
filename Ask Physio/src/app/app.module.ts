@@ -18,6 +18,8 @@ import { LoginService } from './services/login.service';
 import { AppConfigService } from './core/app-config.service';
 import { DoctorService } from './services/doctor.service';
 import { PatientService } from './services/patient.service';
+// import { ScheduleComponent } from './schedule/schedule.component';
+
 
 
 
@@ -36,7 +38,8 @@ import { PatientService } from './services/patient.service';
     AppComponent,
     AdminLayoutComponent,
     RegisterComponent,
-    LoginComponent,
+    LoginComponent
+    // ScheduleComponent
 
   ],
   providers: [LoginService,AppConfigService,PatientService,DoctorService],

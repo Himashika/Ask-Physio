@@ -47,25 +47,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password *" value=""
+                                    <input type="newPassword" class="form-control" placeholder="newPassword *" value=""
                                         formControlName="password" />
                                         <div
                                         [hidden]="patientRegistrationForm.get('password').valid || (patientRegistrationForm.get('password').pristine && !isPatientFormSubmitted)">
                                         <small class="bbk-field__message "
                                             *ngIf="patientRegistrationForm.get('password').errors && patientRegistrationForm.get('password').errors.required">
-                                            <i class="fa fa-info-circle u-color-danger"></i> Password is Required
+                                            <i class="fa fa-info-circle u-color-danger"></i> newPassword is Required
                                         </small>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Confirm Password *"
+                                    <input type="newPassword" class="form-control" placeholder="Confirm Password *"
                                         value="" formControlName="confirmPassword" />
                                 </div>
                                 <div
                                 [hidden]="patientRegistrationForm.get('confirmPassword').valid || (patientRegistrationForm.get('confirmPassword').pristine && !isPatientFormSubmitted)">
                                 <small class="bbk-field__message "
                                     *ngIf="patientRegistrationForm.get('confirmPassword').errors && patientRegistrationForm.get('confirmPassword').errors.required">
-                                    <i class="fa fa-info-circle u-color-danger"></i>Confirm Password is Required
+                                    <i class="fa fa-info-circle u-color-danger"></i>Confirm newPassword is Required
                                 </small>
                             </div>
                             </div>
@@ -107,9 +107,9 @@
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" id="exampleFormControlSelect1"  formControlName="gender">
-                                        <option>Select Gender</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
+                                        <option value="0">Select Gender</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
                                     </select>
                                     <div
                                     [hidden]="patientRegistrationForm.get('gender').valid || (patientRegistrationForm.get('gender').pristine && !isPatientFormSubmitted)">
@@ -120,7 +120,7 @@
                                 </div>
                                 </div>
 
-                                <input type="submit" class="btnRegister" value="Register" (click)="goToProfile()" />
+                                <input type="submit" class="btnRegister" value="Register" (click)="savePatient()" />
                             </div>
 
                         </div>
@@ -187,24 +187,24 @@
                             </div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password *" value=""
+                                <input type="newPassword" class="form-control" placeholder="newPassword *" value=""
                                     formControlName="password" />
                                     <div
                                     [hidden]="doctorRegistrationForm.get('password').valid || (doctorRegistrationForm.get('password').pristine && !isDoctorFormSubmitted)">
                                     <small class="bbk-field__message "
                                         *ngIf="doctorRegistrationForm.get('password').errors && doctorRegistrationForm.get('password').errors.required">
-                                        <i class="fa fa-info-circle u-color-danger"></i> Password is Required
+                                        <i class="fa fa-info-circle u-color-danger"></i> newPassword is Required
                                     </small>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Password *" value=""
+                                <input type="newPassword" class="form-control" placeholder="Confirm newPassword *" value=""
                                     formControlName="confirmPassword" />
                                     <div
                                     [hidden]="doctorRegistrationForm.get('confirmPassword').valid || (doctorRegistrationForm.get('confirmPassword').pristine && !isDoctorFormSubmitted)">
                                     <small class="bbk-field__message "
                                         *ngIf="doctorRegistrationForm.get('confirmPassword').errors && doctorRegistrationForm.get('confirmPassword').errors.required">
-                                        <i class="fa fa-info-circle u-color-danger"></i>Confirm Password  is Required
+                                        <i class="fa fa-info-circle u-color-danger"></i>Confirm newPassword  is Required
                                     </small>
                                 </div>
                             </div>
@@ -222,8 +222,7 @@
                                 </small>
                             </div>
                             </div>
-                            <input type="submit" class="btnRegister" value="Register"
-                                [routerLink]="['/askphysio/dashboard']" />
+                            <input type="submit" class="btnRegister" value="Register" (click)="saveDoctor()" />
                         </div>
                     </div>
                     </form>

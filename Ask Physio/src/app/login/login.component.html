@@ -44,7 +44,7 @@
                                                     </small>
                                                   </div>
                                         </div>
-                                       
+                                        <div [hidden]="!showError"><span>Incorrect User Name or Password</span></div>
                                         <a href="">Forgot Password?</a>
                                         <input type="submit" class="btnRegister"  value="Login" (click)="patientLogin()"/>
                                     </div>
@@ -74,9 +74,10 @@
                                                     </small>
                                                   </div>
                                         </div>
-                                        
+                                        <div [hidden]="!showError"><span>Incorrect User Name or Password</span></div>
                                         <a href="">Forgot Password?</a>
-                                        <input type="submit" class="btnRegister"  value="Login" (click)="doctorLogin()"/>
+                                        <input type="submit" class="btnRegister"  value="Login" (click)="doctorLogin()"
+                                        [routerLink]="['/askphysio/dashboard-doctor']"/>
                                     </div>
                                 </form>
                                 </div>

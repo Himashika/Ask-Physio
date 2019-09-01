@@ -16,3 +16,7 @@ a{
     margin: 120px;
     width: -webkit-fill-available;
 }
+.btn-width {
+    width: 100%;
+    margin: 0;
+}

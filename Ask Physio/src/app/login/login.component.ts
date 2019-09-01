@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { UserLogin } from '../models/UserLogin';
+import { Router } from '@angular/router';
+import { fail } from 'assert';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +12,12 @@ import { UserLogin } from '../models/UserLogin';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb : FormBuilder,private logingService:LoginService) { }
+  constructor(private router: Router,private fb : FormBuilder,private logingService:LoginService) { }
   patientForm :FormGroup;
   doctorForm : FormGroup;
   userLogin = new UserLogin();
   token:any;
+  showError=false ;
   isPatientFormSubmitted = false;
   isDoctorFormSubmitted = false;
   ngOnInit() {
@@ -43,9 +46,14 @@ patientLogin()
   this.logingService.create(this.userLogin).subscribe(res=>{
     this.token = res;
     if(this.token.value!=null)
+    this.showError=false ;
      localStorage.setItem('Token_id',this.token.value);
      localStorage.setItem('User_info',this.token.value)
-  },error=>{}
+     this.goToProfilePatient();
+  },error=>{
+    debugger;
+    this.showError=true ;
+  }
   )
 }
 doctorLogin()
@@ -56,13 +64,26 @@ doctorLogin()
     return;
   }
   this.userLogin = Object.assign({},this.userLogin,this.doctorForm.value);
-  this.userLogin.UserRole = "Doctor";
+  this.userLogin.UserRole = "Consultant";
   this.logingService.create(this.userLogin).subscribe(res=>{
     this.token = res;
     if(this.token.value!=null)
+    this.showError=false ;
      localStorage.setItem('Token_id',this.token.value);
      localStorage.setItem('User_info',this.token.value)
-  },error=>{}
+     this.goToProfileDoctor();
+  },error=>{
+    this.showError=true ;
+  }
   )
+}
+
+goToProfilePatient()
+{
+  this.router.navigate(["/askphysio/dashboard"]); 
+}
+goToProfileDoctor()
+{
+  this.router.navigate(["/askphysio/dashboard-doctor"]); 
 }
 }

@@ -9,6 +9,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { DoctorDashboardComponent } from '../../doctor-dashboard/doctor-dashboard.component';
+import { ScheduleComponent } from '../../schedule/schedule.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -19,5 +20,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'dashboard-doctor', component:DoctorDashboardComponent}
+    { path: 'dashboard-doctor', component:DoctorDashboardComponent},
+    { path: 'schedule' , component: ScheduleComponent},
 ];

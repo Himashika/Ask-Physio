@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,Validator } from '@angular/forms';
 import { DoctorModel } from '../models/DoctorModel';
 import { PatientService } from '../services/patient.service';
 import { DoctorService } from '../services/doctor.service';
 import { PatientModel } from '../models/PatientModel';
+import { PasswordValidation } from '../core/PasswordValidation';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
       email: ["", [Validators.required]],
       phoneNo: ["", [Validators.required]],
       address: ["", [Validators.required]],
-      gender: ["", [Validators.required]]
+      gender: [0, [Validators.required]]
     });
     this.doctorRegistrationForm = this.fb.group({
       firstName: ["", [Validators.required]],
@@ -44,9 +45,11 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ["", [Validators.required]],
       email: ["", [Validators.required]],
       phoneNo: ["", [Validators.required]],
-      address: ["", [Validators.required]],
-      gender: ["", [Validators.required]],
+      gender: [0, [Validators.required]],
       registrationNo: ["", [Validators.required]]
+    },
+    {
+      validator : PasswordValidation.MatchPassword
     });
   }
   savePatient() {
@@ -72,23 +75,24 @@ export class RegisterComponent implements OnInit {
     )
   }
   saveDoctor() {
+    debugger;
     this.isDoctorFormSubmitted = true;
-    if(!this.patientRegistrationForm.valid)
+    if(!this.doctorRegistrationForm.valid)
     {
       return;
     }
-    this.doctorModel = Object.assign({},this.doctorModel,this.patientRegistrationForm.value);
+    this.doctorModel = Object.assign({},this.doctorModel,this.doctorRegistrationForm.value);
     this.doctorService.create(this.doctorModel).subscribe(res=>{
     },error=>{}
     )
   }
   updateDoctor() {
     this.isDoctorFormSubmitted = true;
-    if(!this.patientRegistrationForm.valid)
+    if(!this.doctorRegistrationForm.valid)
     {
       return;
     }
-    this.doctorModel = Object.assign({},this.doctorModel,this.patientRegistrationForm.value);
+    this.doctorModel = Object.assign({},this.doctorModel,this.doctorRegistrationForm.value);
     this.doctorService.update(this.doctorModel).subscribe(res=>{
     },error=>{}
     )
@@ -96,6 +100,9 @@ export class RegisterComponent implements OnInit {
   goToProfile() {
     this.router.navigate(["/askphysio/dashboard"]);
   }
-
+  goToProfileDoctor()
+{
+  this.router.navigate(["/askphysio/dashboard-doctor"]); 
+}
 
 }
