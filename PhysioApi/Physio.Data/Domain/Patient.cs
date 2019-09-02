@@ -1,9 +1,6 @@
 ﻿using Physio.Data.Utility;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Physio.Data.Domain
 {
@@ -29,6 +26,7 @@ namespace Physio.Data.Domain
         [ForeignKey(nameof(UserId))]
         public virtual User User { get; protected set; }
         #endregion
+
         public Patient Create(int id, string firstName, string lastName, string phoneNo,
          string imageUrl, string email, string address, int gender)
         {

@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using Physio.Commmon;
 using Physio.Data.Domain;
 using Physio.Data.Infastructure;
-using Physio.Service.Bo;
 using Physio.Service.Interfaces;
-using Physio.Service.Models;
-using AuthResponseBo = Physio.Service.Bo.AuthResponseBo;
 
 namespace Physio.Service.Services
 {

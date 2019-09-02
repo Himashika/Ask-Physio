@@ -25,7 +25,7 @@ namespace Physio.Service.Services
             try
             {
                 var userModel = new User().Create(model.Email, Enums.UserRoles.Consultant);
-                var @user = await _userService.Register(userModel, model.Password);
+                var @user = await Register(userModel, model.Password);
                 var @doctor = new Doctor().Create(@user.Id, model.FirstName, model.LastName, model.PhoneNo
                     , model.Hospital, model.ImageUrl, model.Email, model.Description, model.RegistrationNo, model.Address, model.Gender).AddUser(@user);
 
@@ -88,6 +88,29 @@ namespace Physio.Service.Services
 
                 throw;
             }
+        }
+
+        //
+        public async Task<User> Register(User user, string password)
+        {
+            byte[] passwordhash, passwordsalt;
+            GeneratePassword(password, out passwordhash, out passwordsalt);
+
+            user.PassWordHash = passwordhash;
+            user.PassWordsalt = passwordsalt;
+
+            var result = await _context.UserRepository.CreateAndSave(user);
+
+            return result;
+        }
+
+        private void GeneratePassword(string password, out byte[] passwordhash, out byte[] passwordsalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            {
+                passwordsalt = hmac.Key;
+                passwordhash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            };
         }
     }
 }
