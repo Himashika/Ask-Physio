@@ -47,7 +47,7 @@ namespace Physio.Service.Services
         {
 
          var dataList = _context.DoctorSchedules.Where(x=>x.Date>=DateTime.Now).Select(x=>x.Id).ToList();
-        return await _context.ScheduleTimes.Include(x=>x.DoctorSchedule).Where(x => dataList.Contains(x.ScheduleId))..ToList();
+        return await _context.ScheduleTimes.Include(x=>x.DoctorSchedule).Where(x => dataList.Contains(x.ScheduleId)).ToListAsync();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Physio.Data.Infastructure
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-5VCPOT7;Database=DbPhysio;Trusted_Connection=true;");
+                optionsBuilder.UseSqlServer("Server=CHITRA-PC;Database=DbPhysio;Trusted_Connection=true;");
             }
         }
         public DbSet<Doctor> Doctors { get; set; }

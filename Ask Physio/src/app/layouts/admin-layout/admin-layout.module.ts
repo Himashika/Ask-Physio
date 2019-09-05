@@ -17,6 +17,9 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { DoctorDashboardComponent } from '../../doctor-dashboard/doctor-dashboard.component';
 import { ScheduleComponent } from '../../schedule/schedule.component';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+
 
 @NgModule({
   imports: [
@@ -25,7 +28,9 @@ import { ScheduleComponent } from '../../schedule/schedule.component';
     FormsModule,
     ChartsModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
   declarations: [
     DashboardComponent,

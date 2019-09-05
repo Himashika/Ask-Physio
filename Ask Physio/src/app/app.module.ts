@@ -18,10 +18,10 @@ import { LoginService } from './services/login.service';
 import { AppConfigService } from './core/app-config.service';
 import { DoctorService } from './services/doctor.service';
 import { PatientService } from './services/patient.service';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 // import { ScheduleComponent } from './schedule/schedule.component';
-
-
-
 
 @NgModule({
   imports: [
@@ -32,17 +32,21 @@ import { PatientService } from './services/patient.service';
     RouterModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
     // ScheduleComponent
 
   ],
-  providers: [LoginService,AppConfigService,PatientService,DoctorService],
+  providers: [LoginService, AppConfigService, PatientService, DoctorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

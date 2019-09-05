@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
   // { path: '/maps', title: 'Maps',  icon:'location_map-big', class: '' },
   // { path: '/askphysio/dashboard-doctor', title: 'doc',  icon:'ui-1_bell-53', class: '' },
   // { path: '/askphysio/icons', title: 'icons',  icon:'users_single-02', class: '' },
-  { path: '/askphysio/schedule', title: 'scedule',  icon:'objects_key-25', class: '' }
+  { path: '/askphysio/schedule', title: 'schedule',  icon:'objects_key-25', class: '' }
 
     // { path: '/user-profile', title: 'User Profile',  icon:'users_single-02', class: '' },
     // { path: '/table-list', title: 'Table List',  icon:'design_bullet-list-67', class: '' },

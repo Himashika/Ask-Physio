@@ -13,43 +13,46 @@
 
               <div class="col-md-6 pr-1">
                 <div class="form-group">
-                  <label>Date(from)</label>
-                  <div class="input-group">
-                      <input class="form-control" placeholder="yyyy-mm-dd"
-                             name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" formController="fromDate">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-                      </div>
-                    </div>
+                    <input type="text" placeholder="Date(from)" bsDatepicker class="form-control">
+                  
+
+                  <!-- <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd"
+                    name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+             <div class="input-group-append">
+               <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+             </div>
+                  </div> -->
                 </div>
               </div>
-             
+
               <div class="col-md-6 pl-1">
                 <div class="form-group">
-                  <label>Date(to)</label>
-                  <div class="input-group">
-                      <input class="form-control" placeholder="yyyy-mm-dd"
-                             name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" formController="toDate">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-                      </div>
-                    </div>
+                    <input type="text" placeholder="Date(to)" class="form-control" bsDatepicker>
+          
+                  <!-- <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd"
+                    name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+             <div class="input-group-append">
+               <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+             </div> -->
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row"> 
               <div class="col-md-6 pr-1">
                 <div class="form-group">
                   <label>Time(from)</label>
-                  <!-- <timepicker [(ngModel)]="fromtime"></timepicker> -->
-                  <div formController="fromTime"></div>
+                  <!-- <ngb-timepicker [(ngModel)]="time"></ngb-timepicker> -->
+                  <timepicker [(ngModel)]="fromTime" [ngModelOptions]="{standalone: true}"></timepicker>
                 </div>
               </div>
               <div class="col-md-6 pl-1">
                 <div class="form-group">
                   <label>Time(to)</label>
-                  <!-- <timepicker [(ngModel)]="totime"></timepicker> -->
-                  <div formController="toTime"></div>
+                  <!-- <ngb-timepicker [(ngModel)]="time"></ngb-timepicker> -->
+                  <timepicker [(ngModel)]="toTime" [ngModelOptions]="{standalone: true}"></timepicker>
                 </div>
               </div>
             </div>
@@ -99,5 +102,109 @@
     </div>
 
   </div>
-</div>
+  <div class="row">
 
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <!-- <h5 class="card-category">All Persons List</h5> -->
+          <h4 class="card-title">Appoinments</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Name
+                </th>
+                <th>
+                  Time
+                </th>
+                <th>
+                  Location
+                </th>
+                <th class="text-right">
+                  Option
+                </th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Mrs.Jayakody
+                  </td>
+                  <td>
+                    4pm-5pm
+                  </td>
+                  <td>
+                    Wallawatta
+                  </td>
+                  <td class="text-right">
+                    <button class="btn mr-1"><i>u</i></button>
+                    <button class="btn mr-1"><i>e</i></button>
+                    <button class="btn"><i>d</i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Mr.D.Perera
+                  </td>
+                  <td>
+                    3.30pm-5pm
+                  </td>
+                  <td>
+                    nugegoda
+                  </td>
+                  <td class="text-right">
+                    Rs.1500/-
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Sage Rodriguez
+                  </td>
+                  <td>
+                    Netherlands
+                  </td>
+                  <td>
+                    Baileux
+                  </td>
+                  <td class="text-right">
+                    $56,142
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Doris Greene
+                  </td>
+                  <td>
+                    Malawi
+                  </td>
+                  <td>
+                    Feldkirchen in Kärnten
+                  </td>
+                  <td class="text-right">
+                    $63,542
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Mason Porter
+                  </td>
+                  <td>
+                    Chile
+                  </td>
+                  <td>
+                    Gloucester
+                  </td>
+                  <td class="text-right">
+                    $78,615
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
