@@ -18,7 +18,7 @@ import { LoginService } from './services/login.service';
 import { AppConfigService } from './core/app-config.service';
 import { DoctorService } from './services/doctor.service';
 import { PatientService } from './services/patient.service';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+// import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 // import { ScheduleComponent } from './schedule/schedule.component';
@@ -33,8 +33,8 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
+    // OwlDateTimeModule,
+    // OwlNativeDateTimeModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot()
   ],
