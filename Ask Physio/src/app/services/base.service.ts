@@ -12,8 +12,14 @@ export class BaseService {
   constructor(protected http: HttpClient, protected actionUrl: string) {
   }
   
-  getAll(skip: number, take: number, search: string, orderby: string): Observable<any> {
-    return this.http.get(`${this.actionUrl}?skip=${skip}&take=${take}&search=${search}&orderby=${orderby}`)
+  getAllByFilter(date: string,search: string): Observable<any> {
+    return this.http.get(`${this.actionUrl}?date=${date}&search=${search}`)
+      .map((response) => response)
+      .catch(this.errorHandler);
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get(`${this.actionUrl}`)
       .map((response) => response)
       .catch(this.errorHandler);
   }

@@ -9,7 +9,7 @@ namespace Physio.Service.Bo
         public int Id { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
-        public int PhoneNo { get; set; }
+        public String PhoneNo { get; set; }
         public string Hospital { get; set; }
         public string ImageUrl { get; set; }
         public string Email { get; set; }

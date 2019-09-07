@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Physio.Service.Bo;
 using Physio.Service.Interfaces;
+using Physio.Service.Models;
 //using Physio.Service.Interfaces;
 using Physio.Web.Models;
 using Physio.Web.Utility;
@@ -23,7 +24,7 @@ namespace Physio.Web.Controllers
             service = _service;
             securityService = _securityService;
         }
-     
+
         [HttpGet, Route("patients")]
         public async Task<IActionResult> Get()
         {
@@ -45,7 +46,8 @@ namespace Physio.Web.Controllers
             try
             {
 
-                return null;
+                service.Create(model);
+                return Ok();
             }
             catch (Exception)
             {
@@ -60,7 +62,8 @@ namespace Physio.Web.Controllers
             try
             {
 
-                return null;
+                service.Update(model);
+                return Ok();
             }
             catch (Exception)
             {
@@ -69,13 +72,30 @@ namespace Physio.Web.Controllers
             }
 
         }
+        // [HttpDelete, Route("patients")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    try
+        //    {
+
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
+
         [HttpDelete, Route("patients")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Post(EmailModel model)
         {
             try
             {
 
-                return null;
+                var result = service.SendMessage(model);
+                return Ok(result);
             }
             catch (Exception)
             {

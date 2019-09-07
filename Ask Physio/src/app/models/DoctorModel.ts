@@ -1,5 +1,5 @@
 export class DoctorModel{
-    Id
+    Id : number;
     FirstName: string;
     LastName: string;
     PhoneNo: string;

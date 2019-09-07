@@ -49,21 +49,21 @@ namespace Physio.Web.Controllers
             }
 
         }
-        [HttpPut, Route("Schedules")]
-        public async Task<IActionResult> Update(ScheduleViewModel model)
-        {
-            try
-            {
+        //[HttpPut, Route("Schedules")]
+        //public async Task<IActionResult> Update(ScheduleViewModel model)
+        //{
+        //    try
+        //    {
 
-                return null;
-            }
-            catch (Exception)
-            {
+        //        return null;
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
+        //        throw;
+        //    }
 
-        }
+        //}
         [HttpDelete, Route("Schedules")]
         public async Task<IActionResult> Delete(int id)
         {

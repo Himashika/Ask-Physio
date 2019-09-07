@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Physio.Commmon;
 using Physio.Data.Domain;
 using Physio.Data.Infastructure;
 using Physio.Service.Bo;
 using Physio.Service.Interfaces;
+using Physio.Service.Models;
 
 namespace Physio.Service.Services
 {
@@ -27,8 +29,8 @@ namespace Physio.Service.Services
                 var @user = await Register(userModel, model.Password);
                 var @patient = new Patient().Create(@user.Id, model.FirstName, model.LastName, model.PhoneNo
                     , model.ImageUrl, model.Email, model.Address, model.Gender).AddUser(@user);
-               
-             var result = await _context.PatientRepository.CreateAndSave(@patient);
+
+                var result = await _context.PatientRepository.CreateAndSave(@patient);
 
             }
             catch (Exception)
@@ -104,5 +106,34 @@ namespace Physio.Service.Services
                 passwordhash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             };
         }
+
+        public async Task<Boolean> SendMessage(EmailModel model)
+        {
+            try
+            {
+
+                MailMessage Msg = new MailMessage();
+                Msg.From = new MailAddress(model.MailFrom);
+                Msg.To.Add(model.MailTo);
+                Msg.Subject = model.Subject;
+                Msg.Body = model.Description;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.Credentials = new System.Net.NetworkCredential("fernandosathya928@gmail.com", "hello928japan");
+                smtp.EnableSsl = true;
+                smtp.Send(Msg);
+
+                return true;
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught.", ex);
+                return false;
+            }
+        }
     }
 }
+

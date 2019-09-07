@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { UserLogin } from '../models/UserLogin';
 import { Router } from '@angular/router';
 import { fail } from 'assert';
+
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,10 @@ import { fail } from 'assert';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router,private fb : FormBuilder,private logingService:LoginService) { }
+  constructor(private router: Router,private fb : FormBuilder,private logingService:LoginService,
+    vRef: ViewContainerRef) { 
+    //  this.toastr.setRootViewContainerRef(vRef);
+    }
   patientForm :FormGroup;
   doctorForm : FormGroup;
   userLogin = new UserLogin();
@@ -74,6 +79,7 @@ doctorLogin()
      this.goToProfileDoctor();
   },error=>{
     this.showError=true ;
+  //  this.toastr.success("Error Loging");
   }
   )
 }

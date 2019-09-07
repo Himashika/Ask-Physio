@@ -17,7 +17,7 @@ namespace Physio.Data.Domain
         [Required, StringLength(DbConstraints.NameLength)]
         public string LastName { get; set; }
         [Required, StringLength(DbConstraints.PhoneLength)]
-        public int PhoneNo { get; set; }
+        public String PhoneNo { get; set; }
         [StringLength(DbConstraints.NameLength)]
         public string Hospital { get; set; }//not requrd
         public string ImageUrl { get; set; }//not requrd
@@ -33,7 +33,7 @@ namespace Physio.Data.Domain
         public virtual User User { get; protected set; }
         #endregion
 
-        public Doctor Create(int id, string firstName, string lastName, int phoneNo, string hospital,
+        public Doctor Create(int id, string firstName, string lastName, String phoneNo, string hospital,
            string imageUrl, string email, string description, string registrationNo, string address, string gender)
         {
             UserId = id;

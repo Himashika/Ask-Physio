@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators,Validator } from '@angular/forms';
 import { DoctorModel } from '../models/DoctorModel';
@@ -6,6 +6,7 @@ import { PatientService } from '../services/patient.service';
 import { DoctorService } from '../services/doctor.service';
 import { PatientModel } from '../models/PatientModel';
 import { PasswordValidation } from '../core/PasswordValidation';
+
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,10 @@ export class RegisterComponent implements OnInit {
 
   isPatientFormSubmitted = false;
   isDoctorFormSubmitted = false;
-  constructor(private router: Router, private fb: FormBuilder,private doctorService:DoctorService,private patientService: PatientService) { }
+  constructor(private router: Router, private fb: FormBuilder,private doctorService:DoctorService,private patientService: PatientService,
+    vRef: ViewContainerRef) {
+      //this.toastr.setRootViewContainerRef(vRef);
+     }
 
   ngOnInit() {
     this.formInitialized();
@@ -44,7 +48,7 @@ export class RegisterComponent implements OnInit {
       password: ["", [Validators.required]],
       confirmPassword: ["", [Validators.required]],
       email: ["", [Validators.required]],
-      phoneNo: ["", [Validators.required]],
+      phoneNo: [0, [Validators.required]],
       gender: [0, [Validators.required]],
       registrationNo: ["", [Validators.required]]
     },
@@ -60,7 +64,10 @@ export class RegisterComponent implements OnInit {
     }
     this.patientModel = Object.assign({},this.patientModel,this.patientRegistrationForm.value);
     this.patientService.create(this.patientModel).subscribe(res=>{
-    },error=>{}
+    //  this.toastr.success("Saved SuccesFully");
+    },error=>{
+     // this.toastr.success("Error Saving");
+    }
     )
   }
   updatePatient() {
@@ -71,7 +78,10 @@ export class RegisterComponent implements OnInit {
     }
     this.patientModel = Object.assign({},this.patientModel,this.patientRegistrationForm.value);
     this.patientService.update(this.patientModel).subscribe(res=>{
-    },error=>{}
+     // this.toastr.success("Updated SuccesFully");
+    },error=>{
+     // this.toastr.success("Error Updating");
+    }
     )
   }
   saveDoctor() {
@@ -83,7 +93,10 @@ export class RegisterComponent implements OnInit {
     }
     this.doctorModel = Object.assign({},this.doctorModel,this.doctorRegistrationForm.value);
     this.doctorService.create(this.doctorModel).subscribe(res=>{
-    },error=>{}
+    //  this.toastr.success("Saved SuccesFully");
+    },error=>{
+     // this.toastr.success("Error Saving");
+    }
     )
   }
   updateDoctor() {
@@ -94,7 +107,10 @@ export class RegisterComponent implements OnInit {
     }
     this.doctorModel = Object.assign({},this.doctorModel,this.doctorRegistrationForm.value);
     this.doctorService.update(this.doctorModel).subscribe(res=>{
-    },error=>{}
+      //this.toastr.success("Updated SuccesFully");
+    },error=>{
+      // this.toastr.success("Error Updating");
+    }
     )
   }
   goToProfile() {

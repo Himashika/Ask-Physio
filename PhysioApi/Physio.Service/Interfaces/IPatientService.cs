@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Physio.Data.Domain;
 using Physio.Service.Bo;
+using Physio.Service.Models;
 
 namespace Physio.Service.Interfaces
 {
@@ -13,5 +14,6 @@ namespace Physio.Service.Interfaces
         void Update(PatientBo model);
         Task<Patient> Read(int userId);
         Task<List<Patient>> ReadAll();
+        Task<Boolean> SendMessage(EmailModel model);
     }
 }

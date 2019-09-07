@@ -13,6 +13,9 @@ namespace Physio.Web.Models
         public String City { get; set; }
         public int PostalCode { get; set; }
         public string Description { get; set; }
+        public DateTime FromTime { get; set; }
+        public DateTime ToTime { get; set; }
+        public string address { get; set; }
 
     }
 }

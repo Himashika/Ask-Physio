@@ -3,7 +3,7 @@
     <form>
       <div class="row">
       <div class="input-group no-border col-md-5">
-        <input class="form-control" placeholder="Search..." type="text" value="">
+        <input class="form-control" [(ngModel)]="searchString" placeholder="Search..." type="text" value="">
         <div class="input-group-append">
           <div class="input-group-text">
             <i class="now-ui-icons ui-1_zoom-bold"></i>
@@ -13,12 +13,12 @@
       
       <div class="col-md-5">
         <div class="input-group">
-          <input type="text" placeholder="Date" class="form-control" bsDatepicker>
+          <input type="text" placeholder="Date" class="form-control" [(ngModel)]="searchDate" bsDatepicker>
 
         </div>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-info btn-width">filter</button>
+        <button class="btn btn-info btn-width" click="searchDoctor">filter</button>
       </div>
     </div>
     </form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { DoctorService } from '../services/doctor.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,6 +8,9 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  searchDate : string;
+  searchString:string;
+  doctors = [];
   public lineBigDashboardChartType;
   public gradientStroke;
   public chartColor;
@@ -57,7 +61,7 @@ export class DashboardComponent implements OnInit {
       return "rgb(" + r + ", " + g + ", " + b + ")";
     }
   }
-  constructor() { }
+  constructor(private doctorService:DoctorService) { }
 
   ngOnInit() {
     this.chartColor = "#FFFFFF";
@@ -406,4 +410,12 @@ export class DashboardComponent implements OnInit {
 
     this.lineChartGradientsNumbersType = 'bar';
   }
+  searchDoctor()
+  {
+    this.doctorService.getAllByFilter(this.searchDate,this.searchString).subscribe(res=>{
+         this.doctors = res;
+       },error=>{});
+  }
+
+
 }

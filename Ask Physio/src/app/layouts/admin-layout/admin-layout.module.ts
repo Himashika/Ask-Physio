@@ -21,6 +21,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +32,9 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     NgbModule,
     ToastrModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    TimepickerModule.forRoot()
+    TimepickerModule.forRoot(),
+    ReactiveFormsModule,
+  
   ],
   declarations: [
     DashboardComponent,

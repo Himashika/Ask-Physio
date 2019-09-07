@@ -54,7 +54,7 @@ namespace Physio.Web.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
+                return BadRequest(ModelState);
 
                 model.Email = model.Email.ToLower();
                 if (await securityService.UserExsits(model.Email))
@@ -63,7 +63,7 @@ namespace Physio.Web.Controllers
                 }
                 else
                 {
-                    service.Create(model);
+                    await service.Create(model);
                     return Ok(model);
                 }
 
