@@ -11,20 +11,17 @@
           <form [formGroup]="scheduleForm">
             <div class="row">
 
-              <!-- <div class="col-md-6 pr-1">
+              <div class="col-md-6 pr-1">
                 <div class="form-group">
                     <input type="text" placeholder="Date(from)" bsDatepicker class="form-control">
-                  
-
-                
                 </div>
-              </div> -->
+              </div>
 
               <div class="col-md-6 pl-1">
                 <div class="form-group">
                     <input type="text" placeholder="Date" class="form-control" bsDatepicker formControlName="date">       
                     <div [hidden]="scheduleForm.get('date').valid || (scheduleForm.get('date').pristine && !isScheduleFormSubmitted)">
-                        <small class="bbk-field__message " *ngIf="scheduleForm.get('date').errors && scheduleForm.get('date').errors.required">
+                        <small class="field__message " *ngIf="scheduleForm.get('date').errors && scheduleForm.get('date').errors.required">
                           <i class="fa fa-info-circle u-color-danger"></i> Date is Required
                         </small>
                       </div>
@@ -38,7 +35,7 @@
          
                   <timepicker [(ngModel)]="fromTime" formControlName="fromTime"></timepicker>
                   <div [hidden]="scheduleForm.get('fromTime').valid || (scheduleForm.get('fromTime').pristine && !isScheduleFormSubmitted)">
-                      <small class="bbk-field__message " *ngIf="scheduleForm.get('fromTime').errors && scheduleForm.get('fromTime').errors.required">
+                      <small class="field__message " *ngIf="scheduleForm.get('fromTime').errors && scheduleForm.get('fromTime').errors.required">
                         <i class="fa fa-info-circle u-color-danger"></i> Time is Required
                       </small>
                     </div>
@@ -50,7 +47,7 @@
               
                   <timepicker [(ngModel)]="toTime" formControlName="toTime" ></timepicker>
                   <div [hidden]="scheduleForm.get('toTime').valid || (scheduleForm.get('toTime').pristine && !isScheduleFormSubmitted)">
-                      <small class="bbk-field__message " *ngIf="scheduleForm.get('toTime').errors && scheduleForm.get('toTime').errors.required">
+                      <small class="field__message " *ngIf="scheduleForm.get('toTime').errors && scheduleForm.get('toTime').errors.required">
                         <i class="fa fa-info-circle u-color-danger"></i> Time is Required
                       </small>
                     </div>
@@ -64,7 +61,7 @@
                   <input type="text" class="form-control" placeholder="Address" formControlName="address"
                     value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
                     <div [hidden]="scheduleForm.get('address').valid || (scheduleForm.get('address').pristine && !isScheduleFormSubmitted)">
-                        <small class="bbk-field__message " *ngIf="scheduleForm.get('address').errors && scheduleForm.get('address').errors.required">
+                        <small class="field__message " *ngIf="scheduleForm.get('address').errors && scheduleForm.get('address').errors.required">
                           <i class="fa fa-info-circle u-color-danger"></i> Address is Required
                         </small>
                       </div>
@@ -77,24 +74,24 @@
                   <label>City</label>
                   <input type="text" class="form-control" placeholder="City" value="Mike" formControlName="city">
                   <div [hidden]="scheduleForm.get('city').valid || (scheduleForm.get('city').pristine && !isScheduleFormSubmitted)">
-                      <small class="bbk-field__message " *ngIf="scheduleForm.get('city').errors && scheduleForm.get('city').errors.required">
+                      <small class="field__message " *ngIf="scheduleForm.get('city').errors && scheduleForm.get('city').errors.required">
                         <i class="fa fa-info-circle u-color-danger"></i> City is Required
                       </small>
                     </div>
                 </div>
               </div>
          
-              <div class="col-md-4 pl-1">
+              <!-- <div class="col-md-4 pl-1">
                 <div class="form-group">
                   <label>Postal Code</label>
                   <input type="number" class="form-control" placeholder="ZIP Code" formControlName="zipCode">
                   <div [hidden]="scheduleForm.get('zipCode').valid || (scheduleForm.get('zipCode').pristine && !isScheduleFormSubmitted)">
-                      <small class="bbk-field__message " *ngIf="scheduleForm.get('zipCode').errors && scheduleForm.get('zipCode').errors.required">
+                      <small class="field__message " *ngIf="scheduleForm.get('zipCode').errors && scheduleForm.get('zipCode').errors.required">
                         <i class="fa fa-info-circle u-color-danger"></i> Zip Code is Required
                       </small>
                     </div>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="row">
               <div class="col-md-12">
@@ -103,7 +100,7 @@
                   <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description"
                     value="Mike" formControlName="description"></textarea>
                     <div [hidden]="scheduleForm.get('date').valid || (scheduleForm.get('date').pristine && !isScheduleFormSubmitted)">
-                        <small class="bbk-field__message " *ngIf="scheduleForm.get('date').errors && scheduleForm.get('date').errors.required">
+                        <small class="field__message " *ngIf="scheduleForm.get('date').errors && scheduleForm.get('date').errors.required">
                           <i class="fa fa-info-circle u-color-danger"></i> Date is Required
                         </small>
                       </div>
