@@ -29,7 +29,7 @@
                                         formControlName="firstName" />
                                     <div
                                         [hidden]="patientRegistrationForm.get('firstName').valid || (patientRegistrationForm.get('firstName').pristine && !isPatientFormSubmitted)">
-                                        <small class="bbk-field__message "
+                                        <small class="field__message "
                                             *ngIf="patientRegistrationForm.get('firstName').errors && patientRegistrationForm.get('firstName').errors.required">
                                             <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
                                         </small>
@@ -38,45 +38,45 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Last Name *" value=""
                                         formControlName="lastName" />
-                                        <div
+                                    <div
                                         [hidden]="patientRegistrationForm.get('lastName').valid || (patientRegistrationForm.get('lastName').pristine && !isPatientFormSubmitted)">
-                                        <small class="bbk-field__message "
+                                        <small class="field__message "
                                             *ngIf="patientRegistrationForm.get('lastName').errors && patientRegistrationForm.get('lastName').errors.required">
                                             <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
                                         </small>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="newPassword" class="form-control" placeholder="newPassword *" value=""
+                                    <input type="Password" class="form-control" placeholder="New Password *" value=""
                                         formControlName="password" />
-                                        <div
+                                    <div
                                         [hidden]="patientRegistrationForm.get('password').valid || (patientRegistrationForm.get('password').pristine && !isPatientFormSubmitted)">
-                                        <small class="bbk-field__message "
+                                        <small class="field__message "
                                             *ngIf="patientRegistrationForm.get('password').errors && patientRegistrationForm.get('password').errors.required">
                                             <i class="fa fa-info-circle u-color-danger"></i> newPassword is Required
                                         </small>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="newPassword" class="form-control" placeholder="Confirm Password *"
+                                    <input type="Password" class="form-control" placeholder="Confirm Password *"
                                         value="" formControlName="confirmPassword" />
                                 </div>
                                 <div
-                                [hidden]="patientRegistrationForm.get('confirmPassword').valid || (patientRegistrationForm.get('confirmPassword').pristine && !isPatientFormSubmitted)">
-                                <small class="bbk-field__message "
-                                    *ngIf="patientRegistrationForm.get('confirmPassword').errors && patientRegistrationForm.get('confirmPassword').errors.required">
-                                    <i class="fa fa-info-circle u-color-danger"></i>Confirm newPassword is Required
-                                </small>
-                            </div>
+                                    [hidden]="patientRegistrationForm.get('confirmPassword').valid || (patientRegistrationForm.get('confirmPassword').pristine && !isPatientFormSubmitted)">
+                                    <small class="field__message "
+                                        *ngIf="patientRegistrationForm.get('confirmPassword').errors && patientRegistrationForm.get('confirmPassword').errors.required">
+                                        <i class="fa fa-info-circle u-color-danger"></i>Confirm newPassword is Required
+                                    </small>
+                                </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="email" class="form-control" placeholder="Your Email *" value=""
                                         formControlName="email" />
-                                        <div
+                                    <div
                                         [hidden]="patientRegistrationForm.get('email').valid || (patientRegistrationForm.get('email').pristine && !isPatientFormSubmitted)">
-                                        <small class="bbk-field__message "
+                                        <small class="field__message "
                                             *ngIf="patientRegistrationForm.get('email').errors && patientRegistrationForm.get('email').errors.required">
                                             <i class="fa fa-info-circle u-color-danger"></i> Email is Required
                                         </small>
@@ -84,11 +84,11 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="text" minlength="10" maxlength="10" name="txtEmpPhone"
-                                        class="form-control" placeholder="Your Phone *" value=""
+                                        class="form-control" placeholder="Your Phone No *" value=""
                                         formControlName="phoneNo" />
-                                        <div
+                                    <div
                                         [hidden]="patientRegistrationForm.get('phoneNo').valid || (patientRegistrationForm.get('phoneNo').pristine && !isPatientFormSubmitted)">
-                                        <small class="bbk-field__message "
+                                        <small class="field__message "
                                             *ngIf="patientRegistrationForm.get('phoneNo').errors && patientRegistrationForm.get('phoneNo').errors.required">
                                             <i class="fa fa-info-circle u-color-danger"></i> Phone No is Required
                                         </small>
@@ -97,27 +97,28 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder=" Your Address *" value=""
                                         formControlName="address" />
-                                        <div
+                                    <div
                                         [hidden]="patientRegistrationForm.get('address').valid || (patientRegistrationForm.get('address').pristine && !isPatientFormSubmitted)">
-                                        <small class="bbk-field__message "
+                                        <small class="field__message "
                                             *ngIf="patientRegistrationForm.get('address').errors && patientRegistrationForm.get('address').errors.required">
                                             <i class="fa fa-info-circle u-color-danger"></i> Address No is Required
                                         </small>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" id="exampleFormControlSelect1"  formControlName="gender">
+                                    <select class="form-control" id="exampleFormControlSelect"
+                                        formControlName="gender">
                                         <option value="0">Select Gender</option>
                                         <option value="1">Male</option>
                                         <option value="2">Female</option>
                                     </select>
                                     <div
-                                    [hidden]="patientRegistrationForm.get('gender').valid || (patientRegistrationForm.get('gender').pristine && !isPatientFormSubmitted)">
-                                    <small class="bbk-field__message "
-                                        *ngIf="patientRegistrationForm.get('gender').errors && patientRegistrationForm.get('gender').errors.required">
-                                        <i class="fa fa-info-circle u-color-danger"></i> Gender is Required
-                                    </small>
-                                </div>
+                                        [hidden]="patientRegistrationForm.get('gender').valid || (patientRegistrationForm.get('gender').pristine && !isPatientFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="patientRegistrationForm.get('gender').errors && patientRegistrationForm.get('gender').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i> Gender is Required
+                                        </small>
+                                    </div>
                                 </div>
 
                                 <input type="submit" class="btnRegister" value="Register" (click)="savePatient()" />
@@ -131,100 +132,107 @@
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <h3 class="register-heading">Register as a Physiotherapist</h3>
                     <form [formGroup]="doctorRegistrationForm">
-                    <div class="row register-form">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name *" value="" formControlName="firstName" />
-                                <div
-                                [hidden]="doctorRegistrationForm.get('firstName').valid || (doctorRegistrationForm.get('firstName').pristine && !isDoctorFormSubmitted)">
-                                <small class="bbk-field__message "
-                                    *ngIf="doctorRegistrationForm.get('firstName').errors && doctorRegistrationForm.get('firstName').errors.required">
-                                    <i class="fa fa-info-circle u-color-danger"></i> First Name  is Required
-                                </small>
-                            </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name *" value="" formControlName="lastName" />
-                                <div
-                                [hidden]="doctorRegistrationForm.get('lastName').valid || (doctorRegistrationForm.get('lastName').pristine && !isDoctorFormSubmitted)">
-                                <small class="bbk-field__message "
-                                    *ngIf="doctorRegistrationForm.get('lastName').errors && doctorRegistrationForm.get('lastName').errors.required">
-                                    <i class="fa fa-info-circle u-color-danger"></i> Last Name  is Required
-                                </small>
-                            </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email *" value="" formControlName="email" />
-                                <div
-                                [hidden]="doctorRegistrationForm.get('email').valid || (doctorRegistrationForm.get('email').pristine && !isDoctorFormSubmitted)">
-                                <small class="bbk-field__message "
-                                    *ngIf="doctorRegistrationForm.get('email').errors && doctorRegistrationForm.get('email').errors.required">
-                                    <i class="fa fa-info-circle u-color-danger"></i> Email  is Required
-                                </small>
-                            </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" maxlength="10" minlength="10" class="form-control"
-                                    placeholder="Phone *" value="" formControlName="phoneNo" />
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="First Name *" value=""
+                                        formControlName="firstName" />
                                     <div
-                                    [hidden]="doctorRegistrationForm.get('phoneNo').valid || (doctorRegistrationForm.get('phoneNo').pristine && !isDoctorFormSubmitted)">
-                                    <small class="bbk-field__message "
-                                        *ngIf="doctorRegistrationForm.get('phoneNo').errors && doctorRegistrationForm.get('phoneNo').errors.required">
-                                        <i class="fa fa-info-circle u-color-danger"></i> Phone No  is Required
-                                    </small>
+                                        [hidden]="doctorRegistrationForm.get('firstName').valid || (doctorRegistrationForm.get('firstName').pristine && !isDoctorFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="doctorRegistrationForm.get('firstName').errors && doctorRegistrationForm.get('firstName').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i> First Name is Required
+                                        </small>
+                                    </div>
                                 </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Last Name *" value=""
+                                        formControlName="lastName" />
+                                    <div
+                                        [hidden]="doctorRegistrationForm.get('lastName').valid || (doctorRegistrationForm.get('lastName').pristine && !isDoctorFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="doctorRegistrationForm.get('lastName').errors && doctorRegistrationForm.get('lastName').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i> Last Name is Required
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email *" value=""
+                                        formControlName="email" />
+                                    <div
+                                        [hidden]="doctorRegistrationForm.get('email').valid || (doctorRegistrationForm.get('email').pristine && !isDoctorFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="doctorRegistrationForm.get('email').errors && doctorRegistrationForm.get('email').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i> Email is Required
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" minlength="10" maxlength="10" name="txtEmpPhone"
+                                        class="form-control" placeholder="Your Phone No *" value=""
+                                        formControlName="phoneNo" />
+                                    <div
+                                        [hidden]="patientRegistrationForm.get('phoneNo').valid || (patientRegistrationForm.get('phoneNo').pristine && !isPatientFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="patientRegistrationForm.get('phoneNo').errors && patientRegistrationForm.get('phoneNo').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i> Phone No is Required
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Medical No *" value=""
+                                        formControlName="registrationNo" />
+                                    <div
+                                        [hidden]="doctorRegistrationForm.get('registrationNo').valid || (doctorRegistrationForm.get('registrationNo').pristine && !isDoctorFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="doctorRegistrationForm.get('registrationNo').errors && doctorRegistrationForm.get('registrationNo').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i> Medical No is Required
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="Password" class="form-control" placeholder="new password *" value=""
+                                        formControlName="password" />
+                                    <div
+                                        [hidden]="doctorRegistrationForm.get('password').valid || (doctorRegistrationForm.get('password').pristine && !isDoctorFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="doctorRegistrationForm.get('password').errors && doctorRegistrationForm.get('password').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i> newPassword is Required
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="Password" class="form-control" placeholder="Confirm new password *"
+                                        value="" formControlName="confirmPassword" />
+                                    <div
+                                        [hidden]="doctorRegistrationForm.get('confirmPassword').valid || (doctorRegistrationForm.get('confirmPassword').pristine && !isDoctorFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="doctorRegistrationForm.get('confirmPassword').errors && doctorRegistrationForm.get('confirmPassword').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i>Confirm newPassword is
+                                            Required
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="exampleFormControlSelect1"
+                                        formControlName="gender">
+                                        <option>Select Gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                    <div
+                                        [hidden]="doctorRegistrationForm.get('gender').valid || (doctorRegistrationForm.get('gender').pristine && !isDoctorFormSubmitted)">
+                                        <small class="field__message "
+                                            *ngIf="doctorRegistrationForm.get('gender').errors && doctorRegistrationForm.get('gender').errors.required">
+                                            <i class="fa fa-info-circle u-color-danger"></i> Gender is Required
+                                        </small>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btnRegister" value="Register" (click)="saveDoctor()" />
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Medical No *" value="" formControlName="registrationNo" />
-                                <div
-                                [hidden]="doctorRegistrationForm.get('registrationNo').valid || (doctorRegistrationForm.get('registrationNo').pristine && !isDoctorFormSubmitted)">
-                                <small class="bbk-field__message "
-                                    *ngIf="doctorRegistrationForm.get('registrationNo').errors && doctorRegistrationForm.get('registrationNo').errors.required">
-                                    <i class="fa fa-info-circle u-color-danger"></i> Medical No  is Required
-                                </small>
-                            </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="newPassword" class="form-control" placeholder="newPassword *" value=""
-                                    formControlName="password" />
-                                    <div
-                                    [hidden]="doctorRegistrationForm.get('password').valid || (doctorRegistrationForm.get('password').pristine && !isDoctorFormSubmitted)">
-                                    <small class="bbk-field__message "
-                                        *ngIf="doctorRegistrationForm.get('password').errors && doctorRegistrationForm.get('password').errors.required">
-                                        <i class="fa fa-info-circle u-color-danger"></i> newPassword is Required
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="newPassword" class="form-control" placeholder="Confirm newPassword *" value=""
-                                    formControlName="confirmPassword" />
-                                    <div
-                                    [hidden]="doctorRegistrationForm.get('confirmPassword').valid || (doctorRegistrationForm.get('confirmPassword').pristine && !isDoctorFormSubmitted)">
-                                    <small class="bbk-field__message "
-                                        *ngIf="doctorRegistrationForm.get('confirmPassword').errors && doctorRegistrationForm.get('confirmPassword').errors.required">
-                                        <i class="fa fa-info-circle u-color-danger"></i>Confirm newPassword  is Required
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1" formControlName="gender" >
-                                    <option>Select Gender</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
-                                <div
-                                [hidden]="doctorRegistrationForm.get('gender').valid || (doctorRegistrationForm.get('gender').pristine && !isDoctorFormSubmitted)">
-                                <small class="bbk-field__message "
-                                    *ngIf="doctorRegistrationForm.get('gender').errors && doctorRegistrationForm.get('gender').errors.required">
-                                    <i class="fa fa-info-circle u-color-danger"></i> Gender  is Required
-                                </small>
-                            </div>
-                            </div>
-                            <input type="submit" class="btnRegister" value="Register" (click)="saveDoctor()" />
-                        </div>
-                    </div>
                     </form>
                 </div>
             </div>
