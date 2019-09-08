@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace Physio.Web.Models
+namespace Physio.Service.Models
 {
     public class ScheduleViewModel
     {
@@ -11,11 +10,11 @@ namespace Physio.Web.Models
         public int DoctorId { get; set; }
         public DateTime Date { get; set; }
         public String City { get; set; }
-        public int PostalCode { get; set; }
         public string Description { get; set; }
-        public DateTime FromTime { get; set; }
-        public DateTime ToTime { get; set; }
-        public string address { get; set; }
-
+        public decimal FromTime { get; set; }
+        public decimal ToTime { get; set; }
+        public string Address { get; set; }
+        public int PatientId { get; set; }
+        public decimal Charges { get; set; }
     }
 }

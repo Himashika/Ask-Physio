@@ -13,8 +13,17 @@
     <ul class="nav">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a [routerLink]="[menuItem.path]">
-                <i class="now-ui-icons {{menuItem.icon}}"></i>
-                <p>{{menuItem.title}}</p>
+                   
+                          <div *ngIf="validateComponent(menuItem.class)">  
+                                <i class="now-ui-icons {{menuItem.icon}}"></i>
+                                <p>{{menuItem.title}}</p>                        
+                    </div>
+<!--               
+                    <div *ngIf="validateUser('Consultant')">
+                            <i class="now-ui-icons {{menuItem.icon}}"></i>
+                            <p>{{menuItem.title}}</p>
+                    </div> -->
+               
             </a>
         </li>
     </ul>

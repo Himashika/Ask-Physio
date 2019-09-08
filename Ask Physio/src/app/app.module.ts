@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule ,ToastContainerModule  } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -36,7 +36,9 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     // OwlDateTimeModule,
     // OwlNativeDateTimeModule,
     BsDatepickerModule.forRoot(),
-    TimepickerModule.forRoot()
+    TimepickerModule.forRoot(),
+    ToastrModule.forRoot(),
+    ToastContainerModule
   ],
   declarations: [
     AppComponent,

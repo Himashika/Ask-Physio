@@ -27,7 +27,7 @@
                                     <form [formGroup]="patientForm">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="User Name *" value="" formControlName="userName" />
+                                            <input type="text" class="form-control" placeholder="email address*" value="" formControlName="userName" />
                                             <div [hidden]="patientForm.get('userName').valid || (patientForm.get('userName').pristine && !isPatientFormSubmitted)">
                                                     <small class="bbk-field__message " *ngIf="patientForm.get('userName').errors && patientForm.get('userName').errors.required">
                                                       <i class="fa fa-info-circle u-color-danger"></i> User Name is Required
@@ -57,7 +57,7 @@
                                 <form [formGroup]="doctorForm">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Medical No *" value="" formControlName="userName"/>
+                                            <input type="text" class="form-control" placeholder="email address *" value="" formControlName="userName"/>
                                             <div [hidden]="doctorForm.get('userName').valid || (doctorForm.get('userName').pristine && !isDoctorFormSubmitted)">
                                                     <small class="bbk-field__message " *ngIf="doctorForm.get('userName').errors && doctorForm.get('userName').errors.required">
                                                       <i class="fa fa-info-circle u-color-danger"></i> User Name is Required

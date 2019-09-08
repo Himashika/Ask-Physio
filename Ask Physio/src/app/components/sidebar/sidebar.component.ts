@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs'; 
 
 declare interface RouteInfo {
     path: string;
@@ -7,12 +8,13 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: '/askphysio/dashboard', title: 'Dashboard',  icon: 'design_app', class: '' },
-  { path: '/askphysio/settings', title: 'Setings',  icon:'loader_gear', class: '' },
+  { path: '/askphysio/dashboard', title: 'Dashboard',  icon: 'design_app', class: 'Patient' },
+  // { path: '/askphysio/settings', title: 'Setings',  icon:'loader_gear', class: '' },
   // { path: '/maps', title: 'Maps',  icon:'location_map-big', class: '' },
-  // { path: '/askphysio/dashboard-doctor', title: 'doc',  icon:'ui-1_bell-53', class: '' },
   // { path: '/askphysio/icons', title: 'icons',  icon:'users_single-02', class: '' },
-  { path: '/askphysio/schedule', title: 'schedule',  icon:'objects_key-25', class: '' }
+  { path: '/askphysio/schedule', title: 'schedule',  icon:'objects_key-25', class: 'Consultant' },
+  { path: '/askphysio/dashboard-doctor', title: 'Dashboard',  icon:'ui-1_bell-53', class: 'Consultant' }
+  
 
     // { path: '/user-profile', title: 'User Profile',  icon:'users_single-02', class: '' },
     // { path: '/table-list', title: 'Table List',  icon:'design_bullet-list-67', class: '' },
@@ -28,11 +30,18 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  userRole = "";
 
   constructor() { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+  let role =  localStorage.getItem("Role");
+
+    forkJoin([role]).subscribe(results => {
+      this.userRole = role;
+    });
+
   }
   isMobileMenu() {
       if ( window.innerWidth > 991) {
@@ -40,4 +49,28 @@ export class SidebarComponent implements OnInit {
       }
       return true;
   };
+
+  validateUser(role)
+  {
+ 
+   if(this.userRole == role)
+   {
+    return true;
+   } 
+   else{
+    return false;
+   }
+  }
+
+  validateComponent(type)
+  {
+   if(this.userRole == type)
+   {
+    return true;
+   } 
+   else{
+    return false;
+   }
+  }
+  
 }

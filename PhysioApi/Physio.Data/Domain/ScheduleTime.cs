@@ -25,5 +25,19 @@ namespace Physio.Data.Domain
         [ForeignKey(nameof(ScheduleId))]
         public virtual DoctorSchedule DoctorSchedule { get; protected set; }
         #endregion
+
+        //public ScheduleTime Cretate(int scheduleId, bool morning , bool afternoon, )
+        //{
+        // ScheduleId
+        // morning
+        // afternoon
+        // Address
+        // City
+        // PostalCode
+        //  Description
+  
+
+        //    return this;
+        //}
     }
 }

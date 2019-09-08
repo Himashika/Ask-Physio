@@ -7,16 +7,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BaseService {
-
+ // 
 
   constructor(protected http: HttpClient, protected actionUrl: string) {
   }
-  
-  getAllByFilter(date: string,search: string): Observable<any> {
-    return this.http.get(`${this.actionUrl}?date=${date}&search=${search}`)
+
+  getAllByFilter(name): Observable<any> {
+    if(name == "")
+    {
+      name = null;
+    }
+    return this.http.get(`${this.actionUrl}/${name}`)
       .map((response) => response)
       .catch(this.errorHandler);
   }
+  // getAllByFilter(search: string): Observable<any> {
+
+  //   return this.http.get(`${this.actionUrl+'/appoiments'}/${name}`)
+  //     .map((response) => response)
+  //     .catch(this.errorHandler);
+  // }
 
   getAll(): Observable<any> {
     return this.http.get(`${this.actionUrl}`)
@@ -28,10 +38,15 @@ export class BaseService {
   }
   
   create(entity: any) {
-    debugger;
+
     return this.http.post(this.actionUrl, entity).map((res) => res).catch(this.errorHandler);
   }
   
+  sendMail(entity: any) {
+    debugger;
+    return this.http.post('https://localhost:44336/api/physio/v1/Doctors/sendRequest', entity).map((res) => res).catch(this.errorHandler);
+  }
+
   createFormData(files, entity: any){
     let formData: FormData = new FormData();
     formData.append('imageUpload', files);

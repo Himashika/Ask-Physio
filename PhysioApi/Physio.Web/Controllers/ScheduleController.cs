@@ -20,12 +20,13 @@ namespace Physio.Web.Controllers
         }
 
         [HttpGet, Route("Schedules")]
-        public async Task<ScheduleViewModel> Get()
+        public async Task<IActionResult> Get(int doctorId)
         {
             try
             {
+                var result = await _scheduleService.GetAllSchedules(doctorId);
+                return Ok(result);
 
-                return null;
             }
             catch (Exception)
             {
@@ -35,11 +36,11 @@ namespace Physio.Web.Controllers
 
         }
         [HttpPost, Route("Schedules")]
-        public async Task<IActionResult> Post(ScheduleViewModel model)
+        public async Task<IActionResult> Post(Service.Models.ScheduleViewModel model)
         {
             try
             {
-
+                await _scheduleService.SaveSchedule(model);
                 return null;
             }
             catch (Exception)
@@ -65,12 +66,13 @@ namespace Physio.Web.Controllers
 
         //}
         [HttpDelete, Route("Schedules")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Service.Models.ScheduleViewModel model)
         {
             try
             {
+                await _scheduleService.DeleteSchedule(model);
 
-                return null;
+                return Ok();
             }
             catch (Exception)
             {

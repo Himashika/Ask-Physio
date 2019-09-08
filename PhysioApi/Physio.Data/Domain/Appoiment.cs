@@ -20,6 +20,8 @@ namespace Physio.Data.Domain
         public bool IsApprove { get; set; }
         public int DoctorId { get; set; }
         public int PatientId { get; set; }
+        public int ScheduleId { get; set; }
+        public decimal Charges { get; set; }
 
         #region relations
         [ForeignKey(nameof(DoctorId))]
@@ -27,5 +29,18 @@ namespace Physio.Data.Domain
         [ForeignKey(nameof(PatientId))]
         public virtual Patient Patient { get; protected set; }
         #endregion
+
+        public Appoiment Create(DateTime date, decimal start, decimal end, bool isApprove, int doctorId, int patientId, decimal charges , int scheduleId)
+        {
+            Date = date;
+            Start = start;
+            End = end;
+            IsApprove = isApprove;
+            DoctorId = doctorId;
+            PatientId = patientId;
+            Charges = charges;
+            ScheduleId = scheduleId;
+            return this;
+        }
     }
 }

@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
 
   patientRegistrationForm: FormGroup;
   doctorRegistrationForm: FormGroup;
-
+  token : any;
   doctorModel= new DoctorModel();
   patientModel= new PatientModel();
 
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
       password: ["", [Validators.required]],
       confirmPassword: ["", [Validators.required]],
       email: ["", [Validators.required]],
-      phoneNo: [0, [Validators.required]],
+      phoneNo: ["", [Validators.required]],
       gender: [0, [Validators.required]],
       registrationNo: ["", [Validators.required]]
     },
@@ -57,6 +57,7 @@ export class RegisterComponent implements OnInit {
     });
   }
   savePatient() {
+    debugger;
     this.isPatientFormSubmitted = true;
     if(!this.patientRegistrationForm.valid)
     {
@@ -64,7 +65,8 @@ export class RegisterComponent implements OnInit {
     }
     this.patientModel = Object.assign({},this.patientModel,this.patientRegistrationForm.value);
     this.patientService.create(this.patientModel).subscribe(res=>{
-    //  this.toastr.success("Saved SuccesFully");
+      this.goToProfile();
+     // this.toastr.success("Saved SuccesFully");
     },error=>{
      // this.toastr.success("Error Saving");
     }
@@ -78,6 +80,10 @@ export class RegisterComponent implements OnInit {
     }
     this.patientModel = Object.assign({},this.patientModel,this.patientRegistrationForm.value);
     this.patientService.update(this.patientModel).subscribe(res=>{
+      if(this.token.value!=null)
+      localStorage.setItem('Token_id',this.token.value);
+      localStorage.setItem('User_info',this.token.value)
+      localStorage.setItem('Role',"Patient")
      // this.toastr.success("Updated SuccesFully");
     },error=>{
      // this.toastr.success("Error Updating");
@@ -93,6 +99,13 @@ export class RegisterComponent implements OnInit {
     }
     this.doctorModel = Object.assign({},this.doctorModel,this.doctorRegistrationForm.value);
     this.doctorService.create(this.doctorModel).subscribe(res=>{
+      debugger;
+      this.token = res;
+      if(this.token.value!=null)
+       localStorage.setItem('Token_id',this.token.value);
+       localStorage.setItem('User_info',this.token.value)
+       localStorage.setItem('Role',"Consultant")
+      this.goToProfileDoctor();
     //  this.toastr.success("Saved SuccesFully");
     },error=>{
      // this.toastr.success("Error Saving");

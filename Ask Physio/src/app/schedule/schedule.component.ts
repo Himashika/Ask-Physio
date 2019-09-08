@@ -29,12 +29,12 @@ export class ScheduleComponent implements OnInit {
     toTime:["",[Validators.required]],
     address:["",[Validators.required]],
     city:["",[Validators.required]],
-    postalCode:["",[Validators.required]],
     description:["",[]],
   })
   }
 
   saveSchedule() {
+    debugger;
     this.isScheduleFormSubmitted = true;
     if(!this.scheduleForm.valid)
     {

@@ -15,5 +15,22 @@ namespace Physio.Data.Domain
         [ForeignKey(nameof(DoctorId))]
         public virtual Doctor Doctor { get; protected set; }
         #endregion
+
+        public DoctorSchedule Create(int doctorId,DateTime date)
+        {
+            DoctorId = doctorId;
+            Date = date;
+
+            return this;
+        }
+
+        public DoctorSchedule Delete(int id, int doctorId, DateTime date)
+        {
+            Id = id;
+            DoctorId = doctorId;
+            Date = date;
+
+            return this;
+        }
     }
 }

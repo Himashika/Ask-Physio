@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ScheduleService extends BaseService {
   constructor(protected http:HttpClient,private appConfig:AppConfigService) {
-    super(http,appConfig.getBaseUrl()+'/schedules');
+    super(http,appConfig.getBaseUrl()+'/Schedules');
   }
  
 }

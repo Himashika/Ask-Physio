@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import { DoctorService } from '../services/doctor.service';
+import { EmailModel } from '../models/EmailModel';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +11,8 @@ import { DoctorService } from '../services/doctor.service';
 })
 export class DashboardComponent implements OnInit {
   searchDate : string;
-  searchString:string;
+  searchString = null;
+  emailModel = new EmailModel();
   doctors = [];
   public lineBigDashboardChartType;
   public gradientStroke;
@@ -64,17 +67,15 @@ export class DashboardComponent implements OnInit {
   constructor(private doctorService:DoctorService) { }
 
   ngOnInit() {
+  
     this.chartColor = "#FFFFFF";
     this.canvas = document.getElementById("bigDashboardChart");
-    this.ctx = this.canvas.getContext("2d");
+ 
 
-    this.gradientStroke = this.ctx.createLinearGradient(500, 0, 100, 0);
-    this.gradientStroke.addColorStop(0, '#80b6f4');
-    this.gradientStroke.addColorStop(1, this.chartColor);
+  
+ 
 
-    this.gradientFill = this.ctx.createLinearGradient(0, 200, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    this.gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+    
 
     this.lineBigDashboardChartData = [
         {
@@ -259,16 +260,6 @@ export class DashboardComponent implements OnInit {
       }
     };
 
-    this.canvas = document.getElementById("lineChartExample");
-    this.ctx = this.canvas.getContext("2d");
-
-    this.gradientStroke = this.ctx.createLinearGradient(500, 0, 100, 0);
-    this.gradientStroke.addColorStop(0, '#80b6f4');
-    this.gradientStroke.addColorStop(1, this.chartColor);
-
-    this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    this.gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
 
     this.lineChartData = [
         {
@@ -296,15 +287,8 @@ export class DashboardComponent implements OnInit {
     this.lineChartType = 'line';
 
     this.canvas = document.getElementById("lineChartExampleWithNumbersAndGrid");
-    this.ctx = this.canvas.getContext("2d");
 
-    this.gradientStroke = this.ctx.createLinearGradient(500, 0, 100, 0);
-    this.gradientStroke.addColorStop(0, '#18ce0f');
-    this.gradientStroke.addColorStop(1, this.chartColor);
 
-    this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    this.gradientFill.addColorStop(1, this.hexToRGB('#18ce0f', 0.4));
 
     this.lineChartWithNumbersAndGridData = [
         {
@@ -335,11 +319,7 @@ export class DashboardComponent implements OnInit {
 
 
     this.canvas = document.getElementById("barChartSimpleGradientsNumbers");
-    this.ctx = this.canvas.getContext("2d");
-
-    this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    this.gradientFill.addColorStop(1, this.hexToRGB('#2CA8FF', 0.6));
+  
 
 
     this.lineChartGradientsNumbersData = [
@@ -409,11 +389,30 @@ export class DashboardComponent implements OnInit {
       }
 
     this.lineChartGradientsNumbersType = 'bar';
+    this.searchDoctor();
   }
   searchDoctor()
   {
-    this.doctorService.getAllByFilter(this.searchDate,this.searchString).subscribe(res=>{
-         this.doctors = res;
+    if(this.searchString == "")
+    {
+      this.searchString = null;
+    }
+    this.doctorService.getAllByFilter(this.searchString).subscribe(res=>{
+    
+      this.doctors = res;
+       },error=>{});
+  }
+
+  sendRequest(doctor)
+  {
+    debugger;
+    this.emailModel.MailTo = doctor.email;
+    this.emailModel.Description = doctor.description;
+    this.emailModel.Subject = "Requesting the Appoiment";
+    this.emailModel.MailFrom = "fernandosathya928@gmail.com";
+  
+    this.doctorService.sendMail(this.emailModel).subscribe(res=>{
+      
        },error=>{});
   }
 

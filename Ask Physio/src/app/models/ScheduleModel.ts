@@ -9,7 +9,7 @@ export class ScheduleModel {
     Description : string;
     FromTime : Time;
     ToTime : Time;
-    address : string;
+    Address : string;
 
     
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Physio.Commmon;
@@ -22,14 +23,23 @@ namespace Physio.Service.Services
 
         public async Task<User> Login(string username, string password, Enums.UserRoles userRole)
         {
-            var user = await _context.UserRepository.Read(x => x.UserName == username && x.UserRole== userRole);
-            if (user == null)
-                return null;
+            try
+            {
+                var user = await _context.UserRepository.Read(x => x.UserName == username && x.UserRole == userRole);
+                if (user == null)
+                    return null;
 
-            if (!VerifyPasswordHash(password, user.PassWordHash, user.PassWordsalt))
-                return null;
+                if (!VerifyPasswordHash(password, user.PassWordHash, user.PassWordsalt))
+                    return null;
+                return user;
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+            
 
-            return user;
+          
         }
 
         private bool VerifyPasswordHash(string password, byte[] passWordHash, byte[] passWordsalt)

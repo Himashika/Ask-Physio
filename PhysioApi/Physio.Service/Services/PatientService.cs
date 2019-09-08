@@ -16,10 +16,12 @@ namespace Physio.Service.Services
     {
         private IUnitOfWork _context;
         private ISecurityService _userService;
+       
         public PatientService(IUnitOfWork context, ISecurityService userService)
         {
             _context = context;
             _userService = userService;
+           
         }
         public async void Create(PatientBo model)
         {
@@ -33,7 +35,7 @@ namespace Physio.Service.Services
                 var result = await _context.PatientRepository.CreateAndSave(@patient);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
